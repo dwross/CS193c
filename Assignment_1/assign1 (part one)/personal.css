@@ -1,0 +1,10 @@
+span.stanfordRed {
+    color:rgb(140,21,21); /* Stanford red */
+    font-weight: bold;
+}
+h1.myName{
+    text-align: center;
+}
+body{
+    font-family: sans-serif;
+}
