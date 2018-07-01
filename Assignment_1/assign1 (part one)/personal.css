@@ -8,3 +8,18 @@ h1.myName{
 body{
     font-family: sans-serif;
 }
+a:hover{
+    color: orange;
+}
+.external::after {
+    content: url(external.png);
+	padding: 5px;
+}
+img{
+    width: 114px;
+    height: 175px;
+    float: left;
+    margin: 7px;
+    border: 2px solid rgb(140,21,21);
+    padding: 4px;
+}
