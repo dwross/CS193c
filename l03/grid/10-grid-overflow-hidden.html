@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Grid Example</title>
+<style>
+body {
+	display: grid;
+	grid-template-columns: 100px 100px;
+	grid-template-rows: 100px 100px;
+}
+div {
+	border: 1px solid blue;
+	margin: 2px;
+}
+#a {
+	grid-column-start: 1;
+	grid-row-start: 1;
+	overflow: hidden;
+}
+#b {
+	grid-column-start: 2;
+	grid-row-start: 1;
+}
+#c {
+	grid-column-start: 1;
+	grid-row-start: 2;
+}
+#d {
+	grid-column-start: 2;
+	grid-row-start: 2;
+}
+</style>
+</head>
+<body>
+<div id="a">Alpha has a title to long to fit in its square.  What will happen when we run out of space?</a></div>
+<div id="b">Bravo</a></div>
+<div id="c">Charlie</a></div>
+<div id="d">Delta</a></div>
+</body>
+</html>
