@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Side vs. Top Navigation</title>
+<style>
+    nav {
+        float: left;
+    }
+    nav ul {
+        margin: 0px;
+        padding: 0px;
+    }
+    nav li {
+        display: block;
+        width: 100px;
+        height: 25px;
+        border: 2px solid blue;
+        margin: 2px;
+        background-color: aqua;
+    }
+    @media (max-width: 600px) {
+        nav {
+            float: none;
+        }
+        nav li {
+            display: inline;
+        }
+    }
+</style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>Home</li>
+            <li>Articles</li>
+            <li>Privacy</li>
+            <li>About Us</li>
+        </ul>
+    </nav>
+    <main>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie dui vitae sapien tristique gravida. Praesent erat felis, sollicitudin in ullamcorper at, sollicitudin eget augue. Integer sit amet turpis a mi dignissim elementum. Sed laoreet quis magna vel luctus. Etiam volutpat metus est, a vulputate metus pellentesque dapibus. Etiam pulvinar facilisis molestie. Nullam varius, nisi tincidunt pharetra pulvinar, neque ligula tincidunt justo, tincidunt tristique enim ligula id enim. </p>
+        <p>Mauris facilisis nec magna ultricies ullamcorper. Nullam ultrices eu mi nec viverra. Fusce libero orci, aliquet nec magna sit amet, volutpat venenatis tortor. Aenean feugiat nisi ut auctor scelerisque. Etiam neque diam, aliquet sed nibh vel, varius pellentesque elit. Pellentesque eget faucibus augue. Aliquam leo massa, molestie non venenatis id, finibus quis felis. Suspendisse facilisis ligula magna, a fermentum massa tincidunt sed. Vestibulum dictum sagittis dui, eget blandit metus rhoncus eu. Duis rhoncus arcu nec felis porttitor pharetra. In consequat laoreet lectus, quis commodo mi. Quisque quam nisl, dapibus nec pretium ac, dictum faucibus magna. </p>
+    </main>
+</body>
+</html>
