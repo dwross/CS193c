@@ -49,6 +49,9 @@ img{
   h1 {
     font-size: 36pt;
   }
+  #binghall {
+    float: left
+  }
   #title {
     grid-row-start: 1;
     grid-column: 1 / span 2;
@@ -67,7 +70,7 @@ img{
   }
   #venuepicture {
     grid-row-start: 3;
-    grid-column: 1;
+    grid-column: 2;
   }
   #venuedescription {
     grid-row-start: 3;
