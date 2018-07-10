@@ -20,11 +20,16 @@ h3 {
 img{
   width: calc(100% - 10px);
 }
+p {
+  margin-top: 0px;
+  margin-right: 5px;
+}
 .calendartitle {
   font-family: sans-serif;
   font-size: 14pt;
   font-weight: bold;
   padding-bottom: 15px;
+  padding-top: 5px;
 }
 .entry {
 	border-top: 2px black solid;
@@ -42,15 +47,22 @@ img{
 @media screen and (min-width: 816px) {
   body {
     display: grid;
-    grid-template-columns: 1fr 500px 300px;
-    grid-template-rows: auto;
+    grid-template-columns: 500px 300px;
+    grid-template-rows: 55px 55px auto;
     margin-left: calc((100% - 815px) / 2);
   }
   h1 {
     font-size: 36pt;
   }
-  #binghall {
-    float: left
+  h3 {
+    margin-left: 200px;
+    margin-top: 10px;
+    text-align: right;
+  }
+  #venuepicture {
+    float: left;
+    width: 300px;
+    margin-right: 10px;
   }
   #title {
     grid-row-start: 1;
@@ -58,23 +70,27 @@ img{
   }
   #edition {
     grid-row-start: 1;
-    grid-column: 3;
+    grid-column: 2;
   }
   #venuename {
     grid-row-start: 2;
     grid-column: 1;
   }
-  #calendarsection {
-    grid-row-start: 2;
-    grid-column: 3;
-  }
   #venuepicture {
     grid-row-start: 3;
-    grid-column: 2;
+    grid-column: 1;
   }
   #venuedescription {
     grid-row-start: 3;
-    grid-column: 3;
+    grid-column: 1;
+  }
+  /* #middlesection {
+    grid-row-start: 3;
+    grid-column: 1;
+  } */
+  #calendarsection {
+    grid-row-start: 3 / span 2;
+    grid-column: 2;
   }
 }
 
@@ -122,28 +138,31 @@ img{
   h1 {
     font-size: 28pt;
   }
+  #binghall{
+    margin-bottom: 10px;
+  }
   #title {
-    grid-row-start: 1;
+    grid-row: 1;
     grid-column: 1;
   }
   #edition {
-    grid-row-start: 2;
+    grid-row: 2;
     grid-column: 1;
   }
   #venuename {
-    grid-row-start: 3;
+    grid-row: 3;
     grid-column: 1;
   }
   #venuepicture {
-    grid-row-start: 4;
+    grid-row: 4;
     grid-column: 1;
   }
   #venuedescription {
-    grid-row-start: 5;
+    grid-row: 5;
     grid-column: 1;
   }
   #calendarsection {
-    grid-row-start: 6;
+    grid-row: 6;
     grid-column: 1;
   }
 }
