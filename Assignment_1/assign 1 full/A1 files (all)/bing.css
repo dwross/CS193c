@@ -17,12 +17,13 @@ h2 {
 h3 {
   font-size: 12pt;
 }
-img{
-  width: calc(100% - 10px);
+img {
+  float: left;
+  margin-right: 10px;
 }
 p {
   margin-top: 0px;
-  margin-right: 5px;
+  margin-right: 6px;
 }
 .calendartitle {
   font-family: sans-serif;
@@ -42,7 +43,7 @@ p {
   font-style: italic;
 }
 .last {
-	border-bottom: 2px black solid;
+  border-bottom: 2px black solid;
 }
 @media screen and (min-width: 816px) {
   body {
@@ -59,10 +60,8 @@ p {
     margin-top: 10px;
     text-align: right;
   }
-  #venuepicture {
-    float: left;
-    width: 300px;
-    margin-right: 10px;
+ img {
+    width: 310px;
   }
   #title {
     grid-row-start: 1;
@@ -76,21 +75,14 @@ p {
     grid-row-start: 2;
     grid-column: 1;
   }
-  #venuepicture {
+  #middlesection {
     grid-row-start: 3;
     grid-column: 1;
   }
-  #venuedescription {
-    grid-row-start: 3;
-    grid-column: 1;
-  }
-  /* #middlesection {
-    grid-row-start: 3;
-    grid-column: 1;
-  } */
   #calendarsection {
     grid-row-start: 3 / span 2;
     grid-column: 2;
+    margin-left: 5px;
   }
 }
 
@@ -103,6 +95,9 @@ p {
   h1 {
     font-size: 32pt;
   }
+  img {
+    width: 50%;
+  }
   #title {
     grid-row-start: 1;
     grid-column: 1 / span 2;
@@ -115,13 +110,9 @@ p {
     grid-row-start: 3;
     grid-column: 1 / span 2;
   }
-  #venuepicture {
-    grid-row-start: 4;
-    grid-column: 1;
-  }
-  #venuedescription {
-    grid-row-start: 4;
-    grid-column: 2;
+  #middlesection{
+    grid-row: 4;
+    grid-column: 1 / span 2;
   }
   #calendarsection {
     grid-row-start: 5;
@@ -138,7 +129,8 @@ p {
   h1 {
     font-size: 28pt;
   }
-  #binghall{
+ img {
+    width: 100%;
     margin-bottom: 10px;
   }
   #title {
@@ -153,16 +145,12 @@ p {
     grid-row: 3;
     grid-column: 1;
   }
-  #venuepicture {
+  #middlesection{
     grid-row: 4;
     grid-column: 1;
   }
-  #venuedescription {
-    grid-row: 5;
-    grid-column: 1;
-  }
   #calendarsection {
-    grid-row: 6;
+    grid-row: 5;
     grid-column: 1;
   }
 }
