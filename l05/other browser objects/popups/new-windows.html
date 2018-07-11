@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>New Window Example</title>
+</head>
+<body>
+<div>
+    <input type="button" value="New" id="newBtn" />
+</div>
+<script>
+document.getElementById("newBtn").addEventListener(
+    "click",
+    () => {
+        window.open('example.html','newWindow','width=400,height=200');
+    }
+)
+</script>
+</body>
+</html>
