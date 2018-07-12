@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Pizza Ingredients</title>
+</head>
+<body>
+<h2>Choose Pizza Ingredients</h2>
+<div>
+<form id="pizza">
+<p>
+<label><input type="checkbox" class="ingredient" />Pepperoni</label>
+<label><input type="checkbox" class="ingredient" />Sausage</label>
+<label><input type="checkbox" class="ingredient" />Artichoke</label>
+<label><input type="checkbox" class="ingredient" />Eggplant</label>
+<label><input type="checkbox" class="ingredient" />Olives</label>
+<label><input type="checkbox" class="ingredient" />Onions</label>
+<label><input type="checkbox" class="ingredient" />Mushrooms</label>
+</p>
+<p><b>Total Price:</b> 
+   <input type="text" name="total" value="8" size="5" />
+</p>
+<p><i>$8 Cheese Only<br />
+      $0.75 for Each Ingredient</i>
+</p>
+</form>
+</div>
+<script>
+function calculateTotal() {
+  var ingredients = document.querySelectorAll(".ingredient");
+        // could also access checkboxes instead of class "ingredient",
+        // however, could potentially add other non-ingredient checkboxes
+        // to webpage
+
+  var total = 8;
+  for (item of ingredients) {
+      if (item.checked) {
+         total = total + 0.75;  
+      }
+  }
+
+  document.getElementById("pizza").total.value = total;
+}
+
+var checkboxes = document.querySelectorAll(".ingredient");
+for(box of checkboxes) {
+	box.addEventListener("click",calculateTotal,false);
+}
+
+</script>
+</body>
+</html>
