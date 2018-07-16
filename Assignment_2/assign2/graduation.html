@@ -54,18 +54,28 @@ Emmett Brown
             "Emmett Brown"
         ]
 
-        function grantDoctorate(student) {
-            return "Dr. " + student;
-        }
+        // function grantDoctorate(student) {
+        //     return "Dr. " + student;
+        // }
 
-        function graduateEveryone() {
-            var graduatedArray = students.map(grantDoctorate);
-            document.getElementById("students").value = graduatedArray.join("\n");
-        }
+        // function graduateEveryone() {
+        //     var graduatedArray = students.map(grantDoctorate);
+        //     document.getElementById("students").value = graduatedArray.join("\n");
+        // }
         
+        // document.getElementById("graduate").addEventListener(
+        //     "click",
+        //     graduateEveryone
+        // )
         document.getElementById("graduate").addEventListener(
             "click",
-            graduateEveryone
+            () => {
+                var graduatedArray = students.map( (student) => {
+                        return "Dr. " + student;
+                    }
+                );
+                document.getElementById("students").value = graduatedArray.join("\n");
+            }
         )
     </script>
 </body>

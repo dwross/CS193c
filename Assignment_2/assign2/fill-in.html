@@ -23,12 +23,17 @@
 <span id="warning">Fill me in!!!</span>
 </p>
 <script>
-    function warnUser() {
-        document.getElementById("textField").style.backgroundColor = "red";
-        document.getElementById("warning").style.display = "inline";
-    }
+    // function warnUser() {
+    //     document.getElementById("textField").style.backgroundColor = "red";
+    //     document.getElementById("warning").style.display = "inline";
+    // }
 
-    window.setTimeout(warnUser,3000);
+    // window.setTimeout(warnUser,3000);
+    window.setTimeout(
+        () => {
+            document.getElementById("textField").style.backgroundColor = "red";
+            document.getElementById("warning").style.display = "inline";
+        },3000);
 </script>
 </body>
 </html>
