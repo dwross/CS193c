@@ -1,0 +1,52 @@
+body {
+  margin-left: calc((100% - 815px) / 2);
+  font-family: sans-serif;
+}
+
+h2 {
+  font-variant: small-caps;
+  font-weight: 75;
+  padding: 6px;
+  background-color: dimgrey;
+  margin: 4px;
+  color: white;
+  border: 1px solid black;
+}
+
+.element {
+  border: 2px solid black;
+  margin-right: 8px;
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+
+#main {
+  display: grid;
+  grid-template-columns: 415px 415px;
+  grid-template-rows: auto;
+}
+
+#configuration {
+	grid-column-start: 1;
+	grid-row-start: 1;
+}
+
+#chooseacolor {
+	grid-column-start: 2;
+	grid-row-start: 1;
+}
+
+#factoryoptions {
+	grid-column-start: 1;
+	grid-row-start: 2;
+}
+
+#dealeroptions {
+	grid-column-start: 1;
+	grid-row-start: 3;
+}
+
+#totalprice {
+	grid-column-start: 1;
+	grid-row-start: 4;
+}
