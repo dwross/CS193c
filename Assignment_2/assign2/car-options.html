@@ -14,8 +14,8 @@
       <div id = "configuration">
         <div class = "element">
           <h2>Configuration</h2>
-          <div id = "subpanel">
-            <div id = "types">
+          <div class = "subpanel">
+            <div class = "firstColumn">
               <p class = "lineItem">
                 <input type="radio" value="17790" name="carType" checked="checked" />
                 GT Manual
@@ -33,7 +33,7 @@
                 GT-S Sportshift
               </p>
             </div>
-            <div id = "prices">
+            <div class = "secondColumn">
               <p class = "money">$17,790.00</p>
               <p class = "money">$18,590.00</p>
               <p class = "money">$22,455.00</p>
@@ -45,13 +45,35 @@
       <div id = "chooseacolor">
         <div class = "element">
           <h2>Choose A Color</h2>
+          <div class = "subpanel">
+            <div class = "firstColumn">
+              <form id="chooseColor">
+                <table>
+                  <tr>
+                    <td>
+                      <select class = "colorList" name="carColor" size="5">
+                        <option selected="selected" value="red">Red</option>
+                        <option value="blue">Blue</option>
+                        <option value="silver">Silver</option>
+                        <option value="white">White</option>
+                        <option value="black">Black</option>
+                      </select>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+            <div class = "secondColumn">
+              <img id="photo" src="red.jpg" alt="Vehicle Photo" />
+            </div>
+          </div>
         </div>
       </div>
       <div id = "factoryoptions">
         <div class = "element">
           <h2>Factory Options</h2>
-          <div id = "subpanel">
-            <div id = "types">
+          <div class = "subpanel">
+            <div class = "firstColumn">
               <p class = "lineItem">
                 <input type="radio" value="1235" name="facOpt" />
                 Option Combo #1
@@ -74,7 +96,7 @@
                 No Combo
               </p>
             </div>
-            <div id = "prices">
+            <div class = "secondColumn">
               <p class = "money">$1235.00</p>
               <br \>
               <p class = "money">$3354.00</p>
@@ -87,8 +109,8 @@
       <div id = "dealeroptions">
         <div class = "element">
           <h2>Dealer Options</h2>
-          <div id = "subpanel">
-            <div id = "types">
+          <div class = "subpanel">
+            <div class = "firstColumn">
               <p class = "lineItem">
                 <input type="checkbox" value="550" name="dealOpt" />
                 Upgraded Stero System
@@ -102,7 +124,7 @@
                 Auto-Dimming Mirror
               </p>
             </div>
-            <div id = "prices">
+            <div class = "secondColumn">
               <p class = "money">$550.00</p>
               <p class = "money">$399.00</p>
               <p class = "money">$295.00</p>
@@ -113,6 +135,18 @@
       <div id = "totalprice">
         <div class = "element">
             <h2>Total Price</h2>
+            <div class = "subpanel">
+              <div class = "firstColumn">
+                <p>
+                  <input class = "calcOutput" type="text" name="total" size="18" />
+                </p>
+              </div>
+              <div class = "secondColumn">
+                <p>
+                  <input class = "calcButton" type="button" id="calculateTotal" value = "Calculate Total"  />
+                </p>
+              </div>
+            </div>
         </div>
       </div>
     </div>

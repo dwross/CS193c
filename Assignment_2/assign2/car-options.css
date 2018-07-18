@@ -23,6 +23,10 @@ li {
   margin: 6px 0px 6px 0px;
 }
 
+tr {
+  width: 30px;
+}
+
 .element {
   border: 2px solid black;
   margin-right: 8px;
@@ -70,19 +74,35 @@ li {
 	grid-row-start: 4;
 }
 
-#subpanel {
+.subpanel {
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: auto;
 }
 
-#types {
+.firstColumn {
   grid-column: 1;
   grid-row: 1;
 }
 
-#prices {
+.secondColumn {
   grid-column: 2;
   grid-row: 1;
 }
 
+.calcOutput {
+  margin-left: 20px;
+}
+
+.calcButton {
+  margin-right: 10px;
+  font-size: 12pt;
+  cursor: pointer;
+  border-width: 2px;
+  padding: 2px 20px 2px 20px;
+}
+
+.colorList {
+  margin: 4px;
+  font-weight: bold;
+}
