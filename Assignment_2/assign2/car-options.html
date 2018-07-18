@@ -17,19 +17,19 @@
           <div class = "subpanel">
             <div class = "firstColumn">
               <p class = "lineItem">
-                <input type="radio" value="17790" name="carType" checked="checked" />
+                <input type="radio" value="17790" name="carType" class="cost" checked="checked" />
                 GT Manual
               </p>
               <p class = "lineItem">
-                <input type="radio" value="18590" name="carType" />
+                <input type="radio" value="18590" class="cost" name="carType" />
                 GT Automatic
               </p>
               <p class = "lineItem">
-                <input type="radio" value="22455" name="carType" />
+                <input type="radio" value="22455" class="cost" name="carType" />
                 GT-S Manual
               </p>
               <p class = "lineItem">
-                <input type="radio" value="23155" name="carType" />
+                <input type="radio" value="23155" class="cost" name="carType" />
                 GT-S Sportshift
               </p>
             </div>
@@ -52,11 +52,11 @@
                   <tr>
                     <td>
                       <select class = "colorList" name="carColor" size="5">
-                        <option selected="selected" value="red">Red</option>
-                        <option value="blue">Blue</option>
-                        <option value="silver">Silver</option>
-                        <option value="white">White</option>
-                        <option value="black">Black</option>
+                        <option selected="selected" value="red.jpg">Red</option>
+                        <option value="blue.jpg">Blue</option>
+                        <option value="silver.jpg">Silver</option>
+                        <option value="white.jpg">White</option>
+                        <option value="black.jpg">Black</option>
                       </select>
                     </td>
                   </tr>
@@ -75,14 +75,14 @@
           <div class = "subpanel">
             <div class = "firstColumn">
               <p class = "lineItem">
-                <input type="radio" value="1235" name="facOpt" />
+                <input type="radio" value="1235" name="facOpt" class="cost"  />
                 Option Combo #1
               </p>
               <ul>
                 <li>Power Windows, Doors, Cruise Control</li>
               </ul>
               <p class = "lineItem">
-                <input type="radio" value="3354" name="facOpt" />
+                <input type="radio" value="3354" name="facOpt" class="cost"  />
                 Option Combo #2
               </p>
               <ul>
@@ -92,7 +92,7 @@
                 <li>Power Windows, Doors, Cruise Control</li>
               </ul>
               <p class = "lineItem">
-                <input type="radio" value="0" name="facOpt" checked="checked"/>
+                <input type="radio" value="0" name="facOpt" class="cost" checked="checked"/>
                 No Combo
               </p>
             </div>
@@ -112,15 +112,15 @@
           <div class = "subpanel">
             <div class = "firstColumn">
               <p class = "lineItem">
-                <input type="checkbox" value="550" name="dealOpt" />
+                <input type="checkbox" value="550" name="dealOpt" class="cost" />
                 Upgraded Stero System
               </p>
               <p class = "lineItem">
-                <input type="checkbox" value="399" name="dealOpt" />
+                <input type="checkbox" value="399" name="dealOpt" class="cost" />
                 VIP Security System
               </p>
               <p class = "lineItem">
-                <input type="checkbox" value="295" name="dealOpt" />
+                <input type="checkbox" value="295" name="dealOpt" class="cost" />
                 Auto-Dimming Mirror
               </p>
             </div>
@@ -138,7 +138,7 @@
             <div class = "subpanel">
               <div class = "firstColumn">
                 <p>
-                  <input class = "calcOutput" type="text" name="total" size="18" />
+                  <input id = "calcOutput" type="text" name="total" size="18" />
                 </p>
               </div>
               <div class = "secondColumn">

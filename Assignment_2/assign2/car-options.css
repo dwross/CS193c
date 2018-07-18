@@ -90,8 +90,11 @@ tr {
   grid-row: 1;
 }
 
-.calcOutput {
+#calcOutput {
   margin-left: 20px;
+  font-weight: bold;
+  font-size: 9pt;
+  text-align: right;
 }
 
 .calcButton {
@@ -105,4 +108,5 @@ tr {
 .colorList {
   margin: 4px;
   font-weight: bold;
+  font-size: 10pt;
 }
