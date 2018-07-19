@@ -12,12 +12,39 @@ h1 {
   letter-spacing: 10px;
 }
 
+textarea {
+  margin-top: 50px;
+}
+
+input {
+  font-size: 12pt;
+  border: 2px solid black;
+}
+
 #main {
   box-sizing: border-box;
   border: 2px solid black;
   width: 1000px;
   height: 600px;
   margin: auto;
+}
+
+#upperPanel {
+  display: grid;
+  grid-template-columns: 1fr 200px 400px 1fr;
+  grid-template-rows: auto;
+}
+
+#firstColumn {
+	grid-column: 2;
+  grid-row: 1;
+  margin-top: 50px;
+}
+
+#secondColumn {
+	grid-column: 3;
+  grid-row: 1;
+  margin-top: 50px;
 }
 
 #out {
