@@ -7,7 +7,7 @@
     <script src="bookland.js" defer></script>
   </head>
   <body>
-    <div id="title">
+    <div id="siteTitle">
       <h1>bookland</h1>
     </div>
     <div id = "main">
@@ -19,8 +19,8 @@
         <div id="secondColumn">
           <p><input type="text" id="author" name="author" /></p>
           <p><input type="text" id="title" name="title" /></p>
-          <input type="button" value="Find book" onclick="cToF();" />
-          <input type="button" value="Clear info" onclick="cToF();" />
+          <input type="button" id="find" value="Find book" onclick="find();" />
+          <input type="button" id="clear" value="Clear info" onclick="clearInput();" />
         </div>
       </div>
       <textarea id="out" rows="12" cols="50"></textarea>
