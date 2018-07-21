@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Closure Example</title>
+</head>
+<body>
+    <h1>Closure Example</h1>
+    <p>Closures have a number of uses.  We'll see later in the quarter,
+        for example, that they can clean up our Ajax code.
+    </p>
+    <p>Here we use a closure to reuse an event handler.</p>
+
+    <input type="button" value="Able" id="Able" />
+    <input type="button" value="Baker" id="Baker" />
+    <input type="button" value="Charlie" id="Charlie" />
+
+<script>
+    // Using addEventListener, we can't pass custom parameters to our
+    // event handler.  The event handler gets one parameter, the Event 
+    // object
+
+    // If we want to write event handling code once, but use it with
+    // different "parameters", we can get the same effect using closures
+
+    function createHandler(customData) {
+        var data = customData;
+        return function () {
+            alert(`You pressed the ${data} button`);
+        }
+    }
+
+    var aHandler = createHandler("A");
+    var bHandler = createHandler("B");
+    var cHandler = createHandler("C");
+
+    document.getElementById("Able").addEventListener("click",aHandler);
+    document.getElementById("Baker").addEventListener("click",bHandler);
+    document.getElementById("Charlie").addEventListener("click",cHandler);
+
+</script>
+
+</body>
+</html>

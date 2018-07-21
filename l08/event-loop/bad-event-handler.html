@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Bad Event Handler</title>
+<style>
+    h1:hover {
+        background-color: red;
+    }
+</style>
+</head>
+<body>
+    <h1>Bad Event Handler</h1>
+    <p>While time consuming event handler is running, nothing works.
+        Hover on H1 stops, I-Bar cursor on Text Field stops, and
+        we can't interact with the other button.
+    </p>
+    <p><input type="text" /></p>    
+    <input type="button" id="bad" value="Bad Event Handler" />
+    <input type="button" id="btn" value="Click Me" />
+
+    <script>
+        document.getElementById("btn").addEventListener("click",
+                () => alert("I was clicked"));
+
+        function timeConsuming() {
+            var time = new Date().getTime();
+            var endTime = time + 4000;
+                // stop in 8 seconds
+            var count = 0;
+            do {
+                // waste time doing something
+                count++;
+            } while (new Date().getTime() < endTime);
+            alert("I'm done.")
+        }
+
+        document.getElementById("bad").addEventListener(
+                                        "click",timeConsuming);
+    </script>
+</body>
+</html>
