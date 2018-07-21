@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>getClientBoundingRect without Positioning</title>
+<style>
+    #third {
+        border: 1px solid blue;
+    }
+</style>
+</head>
+<body>
+    <h1>getClientBoundingRect without Positioning</h1>
+    <ul>
+        <li>First</li>
+        <li>Second</li>
+        <li id="third">Third</li>
+    </ul>
+    <input type="button" value="Get Third Rect" id="btn" />
+
+    <script>
+
+    function getThirdRect() {
+        var thirdElement = document.getElementById("third");
+        var rect = thirdElement.getBoundingClientRect();
+        alert(`top: ${rect.top}, left: ${rect.left}, height: ${rect.height}, width: ${rect.width}`);
+    }
+
+    document.getElementById("btn").addEventListener("click",getThirdRect);
+    </script>
+</body>
+</html>

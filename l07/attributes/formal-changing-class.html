@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Untitled Document</title>
+<style>
+
+.first {
+	background-color: red;
+}
+
+.second {
+	background-color: blue;
+}
+
+</style>
+</head>
+<body>
+<h1 id="topHeading" class="first">Example Heading</h1>
+
+<div>
+<input type="button" value="First Class" onclick="changeFirst();" />
+<input type="button" value="Second Class" onclick="changeSecond();" />
+</div>
+
+<script>
+
+function changeFirst() {
+    var headingNode = document.getElementById("topHeading");
+    headingNode.setAttribute("class","first");
+}
+
+function changeSecond() {
+    var headingNode = document.getElementById("topHeading");
+    headingNode.setAttribute("class","second");
+    /* if you're trying to support IE, this is an area where IE 
+       diverged from the standard.  Used className, not class. */
+    // headingNode.setAttribute("className","second");  // for IE
+}
+
+</script>
+</body>
+</html>

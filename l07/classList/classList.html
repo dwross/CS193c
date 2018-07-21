@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Untitled Document</title>
+<style>
+
+.color {
+	background-color: red;
+}
+
+.underdecoration {
+	text-decoration: underline;
+}
+
+</style>
+</head>
+<body>
+<h1 id="topHeading" class="first">Example Heading</h1>
+
+<div>
+<input type="button" value="Toggle Color" onclick="toggleColor();" />
+<input type="button" value="Add Underline" onclick="addUnderline();" />
+<input type="button" value="Remove Underline" onclick="removeUnderline();" />
+</div>
+
+<script>
+
+// There is now a special classList property.  Note as of Summer 2018,
+// caniuse.com reports this will only work in 90% of web browsers.
+
+function toggleColor() {
+    var headingNode = document.getElementById("topHeading");
+    headingNode.classList.toggle("color");
+}
+
+function addUnderline() {
+    var headingNode = document.getElementById("topHeading");
+    headingNode.classList.add("underdecoration");
+}
+
+function removeUnderline() {
+    var headingNode = document.getElementById("topHeading");
+    headingNode.classList.remove("underdecoration");
+}
+
+</script>
+</body>
+</html>

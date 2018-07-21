@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>getClientBoundingRect with Relative</title>
+<style>
+    #testPos {
+        position: relative;
+        top: 25px;
+        left: 25px;
+    }
+</style>
+</head>
+<body>
+    <h1>getClientBoundingRect with Relative Positioning</h1>
+    <p>getClientBoundingRect will give you entirely different
+        results.
+    </p>
+
+    <input type="button" value="Test" id="testBtn" />
+
+    <p>This is some example text with <span id="testPos">offset text using relative placement</span>
+    to get an interesting effect.</p>
+    <script>
+
+    function getRectInfo() {
+        var rect = document.getElementById("testPos").getBoundingClientRect();
+        var boundingRectInfo = `top: ${rect.top}, left: ${rect.left}, height: ${rect.height}, width: ${rect.width}`;
+
+       var computedStyle = document.defaultView.getComputedStyle(
+                            document.getElementById("testPos"),"");
+        var computedInfo = `top: ${computedStyle.top}, left: ${computedStyle.left}, height: ${computedStyle.height}, width: ${computedStyle.width}`;     
+        alert("boundingInfo: " + boundingRectInfo + "\ncomputedInfo: " + computedInfo);       
+    }
+    
+    document.getElementById("testBtn").addEventListener("click",getRectInfo);
+
+    </script>
+</body>
+</html>

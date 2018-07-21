@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>getClientBoundingRect with Absolute Positioning</title>
+<style>
+    #testPos {
+        position: absolute;
+        top: 200px;
+        left: 150px;
+        height: 30px;
+        width: 30px;
+        background-color: blue;
+    }
+</style>
+</head>
+<body>
+    <h1>getClientBoundingRect with Absolute Positioning</h1>
+    <p>getClientBoundingRect will give you the same result, 
+        as accessing the left and top style properties
+        if your element is not nested and if the user doesn't 
+        scroll the webpage.
+    </p>
+
+    <input type="button" value="Test" id="testBtn" />
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lacinia sapien in lacus maximus consectetur vitae quis eros. Cras vitae quam sed nunc tincidunt convallis. Morbi faucibus elit tellus. Fusce elit tellus, pulvinar quis suscipit ac, consectetur a mauris. Pellentesque consectetur metus et magna lacinia, vel lobortis nunc blandit. Nunc ac ipsum a nisl porttitor vestibulum ut at tellus. Quisque sed purus bibendum, vestibulum lectus nec, dignissim turpis. Maecenas quis posuere nisl, sed vehicula velit. Quisque aliquet, lacus vel tempor lobortis, dolor erat aliquam leo, nec condimentum magna velit ut odio. </p>
+
+    <p>Fusce aliquam, tortor ac tincidunt imperdiet, arcu arcu sollicitudin dui, et tristique mi mi accumsan massa. Fusce dapibus imperdiet turpis, vel suscipit ligula malesuada ac. Nunc condimentum elementum purus, vel semper nunc. Vivamus vel ligula sem. Nam eu elit elit. Cras aliquet, mi et lobortis vulputate, arcu nunc faucibus tortor, a tincidunt massa leo pulvinar augue. Curabitur tortor lectus, iaculis et porta nec, porttitor a tellus. Praesent ut consectetur arcu, in ornare enim. Quisque ultrices gravida ipsum, interdum semper nisi consequat eu. Donec mollis, sapien vel convallis finibus, orci libero rhoncus enim, sed venenatis purus purus id tellus. Ut vehicula nec ante sed egestas. Morbi vitae nisi et purus pulvinar sodales a ut erat. Pellentesque sed vestibulum est. Sed ac erat scelerisque, pulvinar libero posuere, porttitor urna. Curabitur lacinia, nunc eget tempor tincidunt, turpis dolor tincidunt metus, eu tristique arcu leo eu leo. Pellentesque rutrum porttitor urna.</p>
+
+    <p>Praesent eget lorem justo. Quisque quis odio vitae dolor faucibus congue vitae eget nibh. In sollicitudin risus sit amet turpis vulputate tempus. Phasellus aliquet vel nunc et fringilla. Sed nec lectus mollis, viverra nulla eget, efficitur lectus. Aliquam rutrum diam ut risus pretium finibus. Integer at diam diam. Morbi condimentum tempus velit in luctus. Nam id pretium justo. Nulla lobortis sollicitudin diam id mattis. Sed rhoncus ornare sapien, ullamcorper hendrerit nunc viverra at. Pellentesque sed ligula vel dui semper placerat. Nullam id consequat nisi. Aliquam convallis lacus ut condimentum sagittis. Donec dictum mi nec sem scelerisque, ac euismod ligula facilisis.</p>
+    
+    <p>Nunc tristique risus in posuere vehicula. Aliquam dapibus magna eget risus mattis, et tristique dolor tempus. Curabitur varius arcu sed porttitor aliquam. Nullam nec enim in libero mollis finibus in vitae sem. Cras luctus lacus at nibh finibus condimentum. Vivamus a augue eget risus vestibulum elementum vitae venenatis dolor. Suspendisse dictum non metus vitae porta. In hac habitasse platea dictumst.</p>
+    
+    <p>Quisque in dictum risus. Fusce ac nisl tellus. Nullam risus ex, porttitor et elementum non, fringilla eu arcu. Phasellus quis tincidunt tellus. Suspendisse mattis vel felis vitae cursus. Nullam in tortor id lectus iaculis posuere. Ut vel sem interdum, sollicitudin justo volutpat, tristique elit. Mauris finibus facilisis magna vel pellentesque. Nulla urna neque, consequat ac lacinia et, mollis nec risus. Nulla hendrerit dolor at neque dapibus viverra. Curabitur viverra, ex a lacinia dignissim, neque eros posuere nisl, vitae convallis magna nulla eu nulla. Integer suscipit enim vel lacus interdum, vel tempus urna porta. Vestibulum blandit lorem at est sagittis, non sollicitudin ligula viverra. Morbi eget pharetra diam. Curabitur id diam sagittis, varius quam et, efficitur sapien. </p>
+    <div id="testPos"></div>
+    <script>
+
+
+    function getRectInfo() {
+        var rect = document.getElementById("testPos").getBoundingClientRect();
+        var boundingRectInfo = `top: ${rect.top}, left: ${rect.left}, height: ${rect.height}, width: ${rect.width}`;
+
+       var computedStyle = document.defaultView.getComputedStyle(
+                            document.getElementById("testPos"),"");
+        var computedInfo = `top: ${computedStyle.top}, left: ${computedStyle.left}, height: ${computedStyle.height}, width: ${computedStyle.width}`;     
+        alert("boundingInfo: " + boundingRectInfo + "\ncomputedInfo: " + computedInfo);       
+    }
+
+    document.getElementById("testBtn").addEventListener("click",getRectInfo);
+
+    </script>
+</body>
+</html>

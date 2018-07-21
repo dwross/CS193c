@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>getClientBoundingRect with Absolute Positioning Nesting</title>
+<style>
+    #testOuter {
+        position: absolute;
+        top: 200px;
+        left: 150px;
+        height: 100px;
+        width: 100px;
+        border: 1px solid blue;
+    }
+    #testPos {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        height: 30px;
+        width: 30px;
+        background-color: red;
+    }
+</style>
+</head>
+<body>
+    <h1>getClientBoundingRect with Nested Absolute Positioning</h1>
+    <p>getClientBoundingRect will give you different results 
+        from accessing the left and top style properties
+        if your element is nested.
+    </p>
+
+    <input type="button" value="Test" id="testBtn" />
+
+    <div id="testOuter">
+         <div id="testPos"></div>
+    </div>
+    <script>
+
+    function getRectInfo() {
+        var rect = document.getElementById("testPos").getBoundingClientRect();
+        var boundingRectInfo = `top: ${rect.top}, left: ${rect.left}, height: ${rect.height}, width: ${rect.width}`;
+
+       var computedStyle = document.defaultView.getComputedStyle(
+                            document.getElementById("testPos"),"");
+        var computedInfo = `top: ${computedStyle.top}, left: ${computedStyle.left}, height: ${computedStyle.height}, width: ${computedStyle.width}`;     
+        alert("boundingInfo: " + boundingRectInfo + "\ncomputedInfo: " + computedInfo);       
+    }
+    
+    document.getElementById("testBtn").addEventListener("click",getRectInfo);
+
+    </script>
+</body>
+</html>
