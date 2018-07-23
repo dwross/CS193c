@@ -14,10 +14,15 @@
 <script>
 
 function display() {
+    alert(document.documentElement.nodeName);
     alert(document.documentElement.childNodes[0].nodeName);
-	alert(document.documentElement.childNodes[0].childNodes[0].nodeName);
-    alert(document.documentElement.childNodes[1].nodeName);
-	alert(document.documentElement.childNodes[2].nodeName);
+    alert(document.documentElement.childNodes[0].childNodes[1].nodeName);
+    alert(document.documentElement.childNodes[0].childNodes[3].nodeName);
+    alert(document.documentElement.childNodes[2].nodeName);
+    alert(document.documentElement.childNodes[2].childNodes[1].nodeName);
+    alert(document.documentElement.childNodes[2].childNodes[3].nodeName);
+    alert(document.documentElement.childNodes[2].childNodes[3].childNodes[1].nodeName);
+    alert(document.documentElement.childNodes[2].childNodes[5].nodeName);
 }
 
 document.getElementById("theButton").addEventListener("click",display,false);
