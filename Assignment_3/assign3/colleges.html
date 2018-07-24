@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bay Area Colleges and Universities</title>
+    <link type="text/css" rel="stylesheet" href="colleges.css" />
+    <script src="colleges.js" defer></script>
+  </head>
+  <body>
+    <div id="siteTitle">
+      <h1>Bay Area Colleges and Universities</h1>
+    </div>
+    <div id="main">
+      <div id="leftPanel">
+        <!-- <table id="resultsTable">
+          <tr class="tableHeaderRow">
+            <td>Name</td>
+            <td>SAT High</td>
+            <td>SAT Low</td>
+            <td>Tuition</td>
+          </tr>
+        </table> -->
+        <table id="resultsTableElemnts"></table>
+          <!-- <tr>
+            <td>California</td>
+            <td>2,943</td>
+          </tr>
+          <tr>
+            <td>Other US</td>
+            <td>3,447</td>
+          </tr>
+          <tr>
+            <td>Asia</td>
+            <td>264</td>
+          </tr>
+          <tr>
+            <td>The Americas</td>
+            <td>83</td>
+          </tr>
+          <tr>
+            <td>Europe</td>
+            <td>69</td>
+          </tr>
+          <tr>
+            <td>Africa</td>
+            <td>44</td>
+          </tr>
+          <tr>
+            <td>Pacific Basin</td>
+            <td>6</td>
+          </tr> -->
+      </div>
+      <div id="rightPanel">
+        <div id="rightPanelMain">
+          <h2>Search Criteria</h2>
+          <p id="pubPriv">
+            <input type="radio" name="pubPrivChoice" id="public" class="pubPrivRadio"/>
+            <label for="public" class="pubPrivLabel">Public</label>
+            <input type="radio" name="pubPrivChoice" id="private"  class="pubPrivRadio"/>
+            <label for="private" class="pubPrivLabel">Private</label>
+            <input type="radio" name="pubPrivChoice" id="dontCare" class="pubPrivRadio" checked="checked"/>
+            <label for="dontCare" class="pubPrivLabel">Don't Care</label>
+          </p>
+          <div id="subpanel">
+            <div id="leftSubpanel">
+              <p class="maxMinLabel">Maximum Tuition</p>
+              <p class="subLabel">leave blank for don't care</p>
+              <p class="maxMinLabel">Maximum High SAT</p>
+              <p class="subLabel">leave blank for don't care</p>
+              <p class="maxMinLabel">Minimum Low SAT</p>
+              <p class="subLabel">leave blank for don't care</p>
+            </div> 
+            <div id="rightSubpanel">
+              <input class="maxMinInput" type="text" value="" name="maxTuitInput" size="12" />
+              <input class="maxMinInput" type="text" value="" name="maxTuitInput" size="12" />
+              <input class="maxMinInput" type="text" value="" name="maxTuitInput" size="12" />
+            </div>  
+          </div>
+        </div>
+        <input type="button" id="updateTableButton" value="Update"  />  
+      </div>
+    </div>
+  </body>
+</html>
