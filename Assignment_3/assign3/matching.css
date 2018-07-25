@@ -1,0 +1,67 @@
+body {
+  margin-left: calc((100% - 870px) / 2);
+  font-family: sans-serif;
+}
+
+.cardSlot {
+  padding-top: 50px;
+  position: relative;
+}
+
+.cardSlot img {
+  width: 85%;
+  height: auto;
+}
+
+.cardSlot .cardButton {
+  width: 127px;
+  height: 185px;
+  position: absolute;
+  top: 21%;
+  left: 0%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#restartGameButton {
+  margin-left: 10px;
+  font-size: 12pt;
+  cursor: pointer;
+  background-color: lightgray;
+  border-width: 2px;
+  border-color: cornflowerblue;
+  padding: 1px 10px 2px 10px;
+  margin-top: 8px;
+}
+
+#main {
+  display: grid;
+  grid-template-columns: repeat(6, 150px);
+  grid-template-rows: auto;
+}
+
+#slot0 {
+  grid-column-start: 1;
+}
+
+#slot1 {
+  grid-column-start: 2;
+}
+
+#slot2 {
+  grid-column-start: 3;
+}
+
+#slot3 {
+  grid-column-start: 4;
+}
+
+#slot4 {
+  grid-column-start: 5;
+}
+
+#slot5 {
+  grid-column-start: 6;
+}
