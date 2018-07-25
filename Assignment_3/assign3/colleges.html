@@ -10,55 +10,19 @@
     <div id="siteTitle">
       <h1>Bay Area Colleges and Universities</h1>
     </div>
-    <div id="main">
+    <div id="main" onload="createTableHeader()">
       <div id="leftPanel">
-        <!-- <table id="resultsTable">
-          <tr class="tableHeaderRow">
-            <td>Name</td>
-            <td>SAT High</td>
-            <td>SAT Low</td>
-            <td>Tuition</td>
-          </tr>
-        </table> -->
-        <table id="resultsTableElemnts"></table>
-          <!-- <tr>
-            <td>California</td>
-            <td>2,943</td>
-          </tr>
-          <tr>
-            <td>Other US</td>
-            <td>3,447</td>
-          </tr>
-          <tr>
-            <td>Asia</td>
-            <td>264</td>
-          </tr>
-          <tr>
-            <td>The Americas</td>
-            <td>83</td>
-          </tr>
-          <tr>
-            <td>Europe</td>
-            <td>69</td>
-          </tr>
-          <tr>
-            <td>Africa</td>
-            <td>44</td>
-          </tr>
-          <tr>
-            <td>Pacific Basin</td>
-            <td>6</td>
-          </tr> -->
+        <table id="resultsTableContainer"></table>
       </div>
       <div id="rightPanel">
         <div id="rightPanelMain">
           <h2>Search Criteria</h2>
           <p id="pubPriv">
-            <input type="radio" name="pubPrivChoice" id="public" class="pubPrivRadio"/>
+            <input type="radio" name="pubPrivChoice" id="public" value="public" class="pubPrivRadio"/>
             <label for="public" class="pubPrivLabel">Public</label>
-            <input type="radio" name="pubPrivChoice" id="private"  class="pubPrivRadio"/>
+            <input type="radio" name="pubPrivChoice" id="private" value="private" class="pubPrivRadio"/>
             <label for="private" class="pubPrivLabel">Private</label>
-            <input type="radio" name="pubPrivChoice" id="dontCare" class="pubPrivRadio" checked="checked"/>
+            <input type="radio" name="pubPrivChoice" id="dontcare" value="dontcare" class="pubPrivRadio" checked="checked"/>
             <label for="dontCare" class="pubPrivLabel">Don't Care</label>
           </p>
           <div id="subpanel">

@@ -16,23 +16,54 @@ var univArray = new Array(
 		{name: "Mills College", nickname: "Mills College", ownership: "private", SATh: 1250, SATl: 1040, tuition: 42918}
 		);
 
-var listitems = "";
 
-document.getElementById("resultsTableElemnts").innerHTML = "<tr class='tableHeaderRow'><td>Name</td><td>SAT High</td><td>SAT Low</td><td>Tuition</td></tr>";
 
-function addItem() {
-	var elem = document.getElementById("resultsTableElemnts");
+document.getElementById("resultsTableContainer").innerHTML = "<col width='147'><col width='117'><col width='110'><col width='86'><tr class='tableHeaderRow'><td>Name</td><td>SAT High</td><td>SAT Low</td><td>Tuition</td></tr>";
 
-	if (typeof elem != 'undefined')
-	{
-		document.getElementById("resultsTableElemnts").innerHTML = "";
+function removePreviousRows() {
+	let collTable = document.getElementById('resultsTableContainer');
+	let tbdyDelete = collTable.getElementsByTagName('tbody')[0];
+	let i = tbdyDelete.rows.length-1;
+	for( i; i > -1; i--) {
+		tbdyDelete.deleteRow(i);
 	}
+}
+
+function buildTable() {
+
+	removePreviousRows();
+
+	let radioChoices = document.querySelectorAll(".pubPrivRadio");
+	let choice;
+  for (item of radioChoices) {
+    if (item.checked) {
+			choice = item.value;		
+    }
+	}
+	
+	let criteriaArray = [0, 0, 0];
+	let criteriaText = document.querySelectorAll(".maxMinInput");
+	for (let i=0; i<criteriaText.length; i++){
+		if (criteriaText[i].value !== "") {
+			criteriaArray[i] = criteriaArray[i] + criteriaText[i].value;
+		}
+	}
+
+	let listitems = "";
 	listitems = listitems + "<tr class='tableHeaderRow'><td>Name</td><td>SAT High</td><td>SAT Low</td><td>Tuition</td></tr>";
-	listitems = listitems + "<tr><td>" + univArray[0].nickname + "</td><td>" + univArray[0].SATh + "</td><td>" + univArray[0].SATl + "</td><td>" + univArray[0].tuition + "</td></tr>";
-	listitems = listitems + "<tr><td>" + univArray[1].nickname + "</td><td>" + univArray[1].SATh + "</td><td>" + univArray[1].SATl + "</td><td>" + univArray[1].tuition + "</td></tr>";
-	listitems = listitems + "<tr><td>" + univArray[6].nickname + "</td><td>" + univArray[6].SATh + "</td><td>" + univArray[6].SATl + "</td><td>" + univArray[6].tuition + "</td></tr>";
-	document.getElementById("resultsTableElemnts").innerHTML = listitems;
+	let collArraySize = univArray.length;
+	for(let i = 0; i<collArraySize; i++){
+		if (((choice === univArray[i].ownership) || (choice === "dontcare")) && 
+			(criteriaArray[0] <= univArray[i].tuition) &&
+			((criteriaArray[1] >= univArray[i].SATh) || (criteriaArray[1] === 0)) &&
+			(criteriaArray[2] <= univArray[i].SATl)) {
+				listitems = listitems + "<tr><td>" + univArray[i].nickname + "</td><td>" + univArray[i].SATh + "</td><td>" + univArray[i].SATl + "</td><td>" + univArray[i].tuition + "</td></tr>";
+		}
+	}
+	let tbdy = document.getElementById('resultsTableContainer').getElementsByTagName('tbody')[0];
+	tbdy.innerHTML = listitems;
 }
 
 var button = document.getElementById("updateTableButton");
-button.addEventListener("click",addItem,false);
+button.addEventListener("click",buildTable,false);
+
