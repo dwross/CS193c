@@ -84,7 +84,7 @@ function flipCard(cardPosition) {
       cardFlippedPosition = cardPosition;
     } else {
       timerActive = true;
-      clearTimeoutVar = setTimeout( () => { testFlippedCard(cardPosition); }, 7000);
+      clearTimeoutVar = setTimeout( () => { testFlippedCard(cardPosition); }, 1500);
     }
   }
 }
