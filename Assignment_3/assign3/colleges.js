@@ -54,7 +54,7 @@ function buildTable() {
 	let collArraySize = univArray.length;
 	for(let i = 0; i<collArraySize; i++){
 		if (((choice === univArray[i].ownership) || (choice === "dontcare")) && 
-			(criteriaArray[0] <= univArray[i].tuition) &&
+			((criteriaArray[0] >= univArray[i].tuition) || (criteriaArray[0] === 0))&&
 			((criteriaArray[1] >= univArray[i].SATh) || (criteriaArray[1] === 0)) &&
 			(criteriaArray[2] <= univArray[i].SATl)) {
 				listitems = listitems + "<tr><td>" + univArray[i].nickname + "</td><td>" + univArray[i].SATh + "</td><td>" + univArray[i].SATl + "</td><td>" + univArray[i].tuition + "</td></tr>";
