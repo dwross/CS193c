@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>This</title>
+<script>
+
+// Here we have x global variable and x property
+
+var x = "globalX";
+
+var obj = {
+		x: "instanceX",
+		badGetX: function () {
+			console.log("badGetX retrieves " + x);
+		},
+		getX: function () {
+			console.log("getX retrieves " + this.x);
+		}
+	};
+	
+obj.badGetX();
+	// => "globalX"
+	// accesses the global variable
+obj.getX();
+	// => "instanceX"
+	// accesses the instance variable
+
+	// unless we explicitly put a "this." in front of any
+	// variable reference in our methods, it will access the global
+	// context, not the current object the method is being called on
+
+function example() {
+	var x = "localX";
+	console.log("example x retrieves " + x);
+	console.log("example this.x retrieves " + this.x);
+}
+
+console.log("calling example");
+example();
+	// prints example x retrieves localX
+    //        example this.x retrieves globalX
+
+	// called by itself directly this.x refers to global variable
+	// this reverts to global variable if function called outside 
+	// context of method call
+
+console.log("calling example in context of obj");
+obj.exAdded = example;
+obj.exAdded();
+	// Calling same code in the context of a method call.  
+	// prints: example x retrieves localX
+	//         example this.x retrieves instanceX
+</script>
+</head>
+<body>
+</body>
+</html>

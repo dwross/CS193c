@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Test</title>
+<script>
+
+// JavaScript does not allow you to define multiple constructors
+// if you need to support different parameter options, you'll need 
+// to handle them on your own.
+// Although as we saw last lecture ES 2015 does allow you to
+// set default values, so this example, could be done using those.
+// However, in some cases, you'll need something even more complex,
+// such as different behavior depending on the type of each parameter.
+
+function Pair(a, b) {
+	if (!a) {
+		this.a = 0;
+	} else {
+		this.a = a;
+	}
+	if (!b) {
+		this.b = 0;
+	} else {
+		this.b = b;
+	}
+	this.sum = function() {
+				console.log(this.a + this.b);
+			};
+	this.difference = function() {
+				console.log(this.a - this.b);
+			};
+}
+
+pairZero = new Pair();
+pairZero.sum();
+
+</script>
+<style>
+</style>
+</head>
+<body>
+</body>
+</html>

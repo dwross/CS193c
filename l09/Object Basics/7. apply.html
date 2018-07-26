@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+<script>
+
+
+// I've been either putting functions directly on objects
+// as methods or defining them and then explicitly assigning
+// them as properties on objects.
+
+// We don't actually have to do that to get this set to an
+// object.  Instead we can use "apply"
+
+// Here I've defined a function which includes references to
+// this.
+	
+function printInfo() {
+	console.log("Name: " + this.name);
+	console.log("Dorm: " + this.dorm);
+}
+
+// When I call apply on it (which is a method available on all Function 
+// objects), the first parameter to apply is the object to use as this
+
+printInfo.apply({name: "Bonnie", dorm: "FloMo", age: 21});
+	// prints Name: Bonnie
+	//        Dorm: FloMo
+
+// If my function takes parameters, I pass those in as an array
+// as the second parameter.
+
+function makeOlder(years) {
+	this.age = this.age + years;
+	console.log("Now Age: " + this.age);
+}
+
+makeOlder.apply({name: "Bonnie", dorm: "FloMo", age: 21}, [3]);
+	// prints Now Age: 24
+  
+// Here I've got an array and I want to call my printInfo on
+// each item, using the items as this.
+
+var myArray = [
+		{name: "Molly",
+		 dorm: "FloMo",
+		 age: 3},
+		{name: "Tamara",
+		 dorm: "FloMo",
+		 age: 21},
+		{name: "Rob",
+		 dorm: "GovCo",
+		 age: 20},
+		{name: "Nicki",
+		 dorm: "GovCo",
+		 age: 20},	 
+	];
+
+for(var student of myArray) {
+	printInfo.apply(student);
+}
+</script>
+</body>
+</html>

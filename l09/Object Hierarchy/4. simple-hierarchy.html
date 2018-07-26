@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Test</title>
+<script>
+
+function StanfordPerson() {
+	this.school = "Stanford";
+}
+
+function StanfordStudent(name) {
+	this.name = name;
+}
+
+// in this last example, we just set individual properties
+// on the prototype
+// here we're setting an entirely new object as the prototype
+StanfordStudent.prototype = new StanfordPerson();
+
+function StanfordEmployee(name,salary) {
+	this.name = name;
+	this.salary = salary;
+}
+
+StanfordEmployee.prototype = new StanfordPerson();
+
+var john = new StanfordStudent("John");
+var mary = new StanfordEmployee("Mary",100000);
+var kate = new StanfordEmployee("Kate",120000);
+var rob = new StanfordEmployee("Rob",90000);
+
+// john has his own name property, which is printed.
+// john does not have a school object, but his prototype 
+// does, so that's what gets printed.
+console.log(john.name);
+console.log(john.school);
+
+// same for mary
+console.log(mary.name);
+console.log(mary.school);
+
+// we can add new properties which mask properties on the
+// prototype
+// here mary has transferred to Harvard.  her prototype
+// still says school is "Stanford" but that will be 
+// masked by the property on mary herself.
+mary.school = "Harvard";
+console.log(mary.school);
+
+// kate is also an employee, but she is unaffected by
+// mary's new school property
+console.log(kate.school);
+
+// we can change properties on the prototype itself
+// this effects everyone with that same prototype
+StanfordEmployee.prototype.school = "Leland Stanford";
+console.log(kate.school);
+console.log(rob.school);
+
+// Stanford Student have their own prototype object, so
+// john is not affected.
+console.log(john.school);
+
+// It's possible to explicitly delete a property
+console.log(mary.school);
+delete mary.school;
+console.log(mary.school);
+
+</script>
+<style>
+</style>
+</head>
+<body>
+</body>
+</html>

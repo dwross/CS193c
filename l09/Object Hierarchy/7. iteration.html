@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Test</title>
+<script>
+
+function Animal() {
+	this.kingdom = "Animal";
+}
+
+function Mammal() {
+	this.biologicalclass = "Mammal";
+}
+
+Mammal.prototype = new Animal();
+
+function Canine() {
+	this.species = "Canis Lupus";
+}
+
+Canine.prototype = new Mammal();
+
+function Human() {
+	this.species = "Homo Sapien";
+}
+
+Human.prototype = new Mammal();
+
+var molly = new Canine();
+var patrick = new Human();
+
+
+var chloe = new Canine();
+molly.species = "Canis Superiorus";
+
+// for...in prints everthing either on the object or on its 
+// prototype all the way up the prototype chain
+console.log("for in");
+
+for (prop in molly) {
+	console.log(prop + " is " + molly[prop]);
+}
+
+// we can restrict this with hasOwnProperty
+// now we're only printing things directly on the object
+console.log("for in with hasOwnProperty");
+
+for (prop in molly) {
+	if (molly.hasOwnProperty(prop)) {
+		console.log(prop + " is " + molly[prop]);
+	}
+}
+
+
+</script>
+<style>
+</style>
+</head>
+<body>
+</body>
+</html>
+

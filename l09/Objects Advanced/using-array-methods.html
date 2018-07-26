@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+<script>
+
+var paragraphs = document.getElementsByTagName("p");
+    // returns an array-like object, not an array
+
+// but we can explicitly retrieve methods from the Array prototype
+// and use them on our array-like object using apply or call
+Array.prototype.forEach.apply(paragraphs,
+    [(item) => {
+        console.log(item.innerText);
+    }]
+);
+
+</script>
+</body>
+</html>

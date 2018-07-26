@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Test</title>
+<script>
+function Pair(a, b) {
+	this.a = a;
+	this.b = b;
+	this.sum = function() {
+				console.log(this.a + this.b);
+			};
+	this.difference = function() {
+				console.log(this.a - this.b);
+			};
+}
+
+// Here I've forgotten to use "new"
+var pairOne = Pair(12,8); // don't do this
+	// this call is legal but wrong
+	// sets global variables a and b to 12 and 8
+	// sets global variables sum and difference to Function objects
+	// Pair doesn't return anything so pairOne remains undefined
+var pairTwo = Pair(5,10);
+	// same thing here
+
+// These calls fail.  Neither pairOne nor pairTwo has been set
+pairOne.sum(); 
+pairTwo.difference();
+
+</script>
+<style>
+</style>
+</head>
+<body>
+</body>
+</html>

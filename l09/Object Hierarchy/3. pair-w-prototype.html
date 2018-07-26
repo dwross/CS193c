@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Test</title>
+<script>
+
+// all objects constructed with the Pair constructor share 
+// a prototype object
+// any properties looked for that aren't on the object itself
+// are searched for on the prototype
+function Pair(a, b) {
+	this.a = a;
+	this.b = b;
+}
+
+Pair.prototype.sum = function() {
+				console.log(this.a + this.b);
+			};
+Pair.prototype.difference = function() {
+				console.log(this.a - this.b);
+			};
+			
+var pairOne = new Pair(12,8);
+var pairTwo = new Pair(5,10);
+
+// sum and difference aren't on the objects themselves, but they
+// are on the objects' prototype, so we can go ahead and use them
+pairOne.sum();
+pairTwo.difference();
+
+</script>
+<style>
+</style>
+</head>
+<body>
+</body>
+</html>

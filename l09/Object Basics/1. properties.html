@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+<script>
+
+// Defining objects using an object literal
+var example = {
+		name: "Molly",
+		nickname: "FloPup",
+		canine: true,
+		age: 8
+	};
+	
+// We can access the properties of an object using either
+// the "." dot accessor or using square brackets
+example.age = example.age + 1;
+example["age"] = example["age"] + 1;
+
+// We can add new properties to an object after it was
+// created.
+example.dorm="Florence Moore Hall";
+example["university"] = "Stanford";
+
+// We can iterate through the properties of an object using 
+// the for ... in construct.
+// This will iterate through both properties of the object 
+// and properties inherited by the object (in this case we
+// haven't setup any inheritance).
+// Use hasOwnProperty to check that this is a property on the
+// object, not one inherited.
+for(let prop in example) {
+	if (example.hasOwnProperty(prop)) {
+		console.log(prop + " : " + example[prop]);
+	}
+}
+
+</script>
+</body>
+</html>

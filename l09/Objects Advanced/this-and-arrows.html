@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+<script>
+
+var x = "globalX";
+
+var example = {
+    x : "instanceX",
+
+    outer() { // note this is an ECMAScript 6 method definition
+        console.log("outer: " + this.x);
+        inner();
+
+        function inner() {
+            console.log("inner: " + this.x);
+                // inner has it's own this independent of outer's this
+        }
+    }
+}
+
+example.outer();
+    // prints outer: instanceX
+    //        inner: globalX
+
+// Here's a common pre-ES2016 way of getting around this
+var exampleHack = {
+    x : "instanceX",
+
+    outer() { 
+        var self = this;
+            // setup local variable self in closure
+
+        console.log("outer: " + this.x);
+        inner();
+
+        function inner() {
+            console.log("inner: " + self.x);
+                // refer to self in closure instead of this
+        }
+    }
+}
+
+exampleHack.outer();
+    // prints outer: instanceX
+    //        inner: instanceX
+
+// arrow functions don't have their own this, they automatically
+// pickup the this of their containing function
+var exampleArrow = {
+    x : "instanceX",
+
+    outer() { 
+
+        var inner = () => {
+            console.log("inner: " + this.x);
+        }
+
+        console.log("outer: " + this.x);
+        inner();
+    }
+}
+
+exampleArrow.outer();
+    // prints outer: instanceX
+    //        inner: instanceX
+
+</script>
+</body>
+</html>

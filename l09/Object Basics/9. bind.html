@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+<script>
+
+// bind takes an existing function and an object and creates a new function
+// that new function calls the original function in the context of the
+// object provided
+
+var pencils = {
+    name: "pencils",
+    count: 0
+}
+
+var pens = {
+    name: "pens",
+    count: 0
+}
+
+function incrementAndReport() {
+    this.count++;
+    console.log(this.name + " : " + this.count);
+}
+
+var pencilIncrementer = incrementAndReport.bind(pencils);
+var penIncrementer = incrementAndReport.bind(pens);
+
+pencilIncrementer();
+pencilIncrementer();
+pencilIncrementer();
+    // prints pencils : 3
+
+penIncrementer();
+penIncrementer();
+    // prints pens : 2
+
+// if our function takes parameters, we can either have those bound
+// along with this, or pass those in on our own.
+
+function multiIncrementer(amount, keyword) {
+    this.count = this.count + amount;
+    console.log(keyword + " " + this.name + " : " + this.count);
+}
+
+var pencilMultiIncrementer = multiIncrementer.bind(pencils);
+    // only bound object provided, no additional parameters
+pencils.count = 0;
+pencilMultiIncrementer(2,"2F");
+    // so I provide both parameters to the bound function in my call 
+    // prints 2F pencils : 2
+pencilMultiIncrementer(3,"HB");
+    // prints HB pencils : 5
+
+var pencilFiveIncrementer = multiIncrementer.bind(pencils,5);
+    // bound object plus first parameter
+pencilFiveIncrementer("2B");
+    // the first parameter is bound along with the object, so
+    // I provide just the second parameter
+    // prints 2B pencils : 10
+
+var pencilFive2Increment = multiIncrementer.bind(pencils,5,"#2");
+    // I bind the object and both the parameters
+
+pencils.count = 0;
+pencilFive2Increment();
+    // I don't pass in any paramters, they're all permanently bound
+    // prints #2 pencils : 5
+pencilFive2Increment();
+    // prints #2 pencils : 10
+
+</script>
+</body>
+</html>

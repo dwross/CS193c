@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+<script>
+
+var x = "globalX";
+
+var example = {
+    x : "instanceX",
+
+    setupTimer() { // note this is an ECMAScript 6 method definition
+        
+        setTimeout(
+            function () {
+                console.log(this.x);
+                    // doesn't pick up this of setupTimer context
+                    // instead goes to global context
+            },
+            300
+        );
+    }
+}
+
+example.setupTimer();
+    // prints "globalX" in 300 milliseconds
+
+// Here's a common pre-ES2016 way of getting around this
+var exampleHack = {
+    x : "instanceX",
+
+    setupTimer() {
+        var self = this;
+        
+        setTimeout(
+            function () {
+                console.log(self.x);
+                    // accessing self from closure
+            },
+            300
+        );
+    }
+}
+
+exampleHack.setupTimer();
+    // prints instanceX in 300 milliseconds
+
+// arrow functions don't have their own this, they automatically
+// pickup the this of their containing function
+var exampleArrow = {
+    x : "instanceX",
+
+    setupTimer() {
+        setTimeout(
+            () => {
+                console.log(this.x);
+                    // picks up this of outer method
+            },
+            300
+        );
+    }
+}
+
+exampleArrow.setupTimer();
+    // prints instanceX
+
+// You may also see Bind used for these types of situations
+
+var exampleBind = {
+    x : "instanceX",
+
+    setupTimer() {
+        setTimeout(
+            (function() {
+                console.log(this.x);
+            }).bind(this),
+            300
+        );
+    }
+}
+exampleBind.setupTimer();
+    // prints instanceX
+
+</script>
+</body>
+</html>

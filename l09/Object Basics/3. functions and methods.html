@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+<script>
+
+// a method is a function attached to an object
+var example = {
+		name: "Molly",
+		nickname: "FloPup",
+		canine: true,
+		age: 8,
+		
+		printInfo: function() {
+			console.log(this.name);
+		}
+	};
+
+// as of ECMAScript 6 (aka ES 2015) we can skip the
+// colon and the word function and just write it like
+// this
+
+var example2 = {
+		name: "Molly",
+		nickname: "FloPup",
+		canine: true,
+		age: 8,
+		
+		printInfo() {
+			console.log(this.name);
+		}
+	};
+
+// we can add a method after the fact.
+example.detailedInfo = function() {
+			console.log(this.name);
+			console.log(this.age);
+	};
+
+example.printInfo();
+example.detailedInfo();
+
+// We can define a function and then attach the function 
+// as method on an object
+function printAge() {
+	console.log(this.age);
+}
+var age = 2;
+
+// if we call printAge directly, this will refer to the
+// global context so it prints a 2 because we just set
+// a global variable age = 2
+printAge();
+
+example.getAge = printAge;
+
+example.getAge();
+	// => 8
+	// in this case our function is called in the context
+	// of an actual object, and that object has an age: 8 
+	// property
+
+// Remember assign the function object itself as the 
+// property
+example.getAge = printAge;   // correct
+console.log(example.getAge);
+	// returns a Function object
+
+example.getAge = printAge(); // incorrect
+	// don't do it this way this is assigning the thing returned
+	// from calling printAge as the property not the function itself
+
+console.log(example.getAge);
+	// => undefined as getAge prints an age, but doesn't actually
+	// return a value.
+
+</script>
+</body>
+</html>

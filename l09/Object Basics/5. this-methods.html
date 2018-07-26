@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>This</title>
+<script>
+
+// something very similar to what we just saw with variables and
+// properties happens with methods
+
+var x = "globalX";
+
+var obj = {
+		x: "instanceX",
+		getX: function () {
+			console.log("getX retrieves " + this.x);
+		},
+		badCaller: function() {
+			getX();
+		},
+		goodCaller: function() {
+			this.getX();
+		}
+	};
+	
+console.log("Good Caller");
+obj.goodCaller();
+	// prints getX retrieves instanceX
+
+	// calls getX on this, which is "obj" since goodCaller
+	// called as a method on obj
+
+console.log("Bad Caller");
+obj.badCaller();
+	// ERROR
+	// tries to call a global function getX which doesn't exist
+
+</script>
+</head>
+<body>
+</body>
+</html>

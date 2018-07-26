@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+<script>
+
+//// NUMERIC PROPERTIES ON REGULAR JAVASCRIPT OBJECTS ////
+var example = {
+		name: "Molly",
+		nickname: "FloPup",
+		canine: true,
+		age: 8
+	};
+	
+example.age = example.age + 1;
+example["age"] = example["age"] + 1;
+
+example.dorm="Florence Moore Hall";
+example["university"] = "Stanford";
+
+// Any object can use numeric properties, just like
+// arrays.
+example[0] = "hello";
+example[1] = "goodbye";
+
+// JavaScript objects and arrays are sparse, so setting
+// a 20th element does not mean we have to have elements
+// 2 through 19 set.
+example[20] = "sparse";
+
+// When we iterate through using for ... in, we get both
+// the "named" properties and the "numbered" properties
+for(let prop in example) {
+	if (example.hasOwnProperty(prop)) {
+		console.log(prop + " : " + example[prop]);
+	}
+}
+
+// while JavaScript objects can have numeric properties,
+// they don't have lengths.
+console.log("example length is " + example.length);
+	// length is undefined
+
+//// WORKING WITH ACTUAL ARRAYS ////
+
+// I can define an Array using the specialized Array literal
+var anArray = ["hello", "goodbye", "test", "items"];
+
+// But Arrays are objects, and they can also be constructed
+// using a standard object constructor.
+var anotherArray = new Array("hello", "goodbye", "test", "items");
+
+// Just as with numeric indices of regular JavaScript objects,
+// Arrays are sparse.
+anArray[20] = "sparse";
+anArray[35] = "efficient";
+
+// for ... in only iterates through items I have defined
+for(let prop in anArray) {
+	if (anArray.hasOwnProperty(prop)) {
+		console.log(prop + " : " + anArray[prop]);
+	}
+}
+
+// Since this is actually an array we can also iterate through
+// using for...of
+// This lists all numeric indexes including the empty undefined
+// ones between 4 and 19 and 21 and 34.  These have the value undefined
+for(let item of anArray) {
+	console.log(item);
+}
+
+	// note while "for...in" works on every Object, "for...of" only
+	// works on Arrays (or other Iterable objects)
+
+// Array's have a special length property.  It will return 
+// one more than the maximum numeric index
+console.log("length is " + anArray.length);
+	// => 36
+	// because we set anArray[35] and JavaScript arrays are zero-indexed
+
+// Array's have special methods on them.  We saw some last lecture
+// such as forEach, map, reduce, and filter.
+// Here are a few more.
+anArray.push("special");
+anArray.push("methods");
+	// these get pushed after item [35]
+
+anArray.sort();
+
+for(var item of anArray) {
+	console.log(item);
+}
+
+// Can add regular properties to an Array
+// (after all it's just an Object)
+
+anArray.newProp = "New Non-Indexed Property";
+anArray.another = "Awesome New Property";
+
+// these won't count toward length
+// and won't be iterated through using for ... of
+// although they will using for ... in
+
+console.log("After Adding Properties");
+console.log("length is " + anArray.length);
+for(var item of anArray) {
+	console.log(item);
+}
+
+
+// can't call special array properties/methods on a regular object
+
+// console.log("length is " + example.length);  // there is no length
+
+// example.push("special");  // there is no push
+
+</script>
+</body>
+</html>

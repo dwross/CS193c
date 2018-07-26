@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>This</title>
+<script>
+
+// THis is the same as the last example, except I've actually
+// written a function called getX instead of just defining
+// getX as a method
+
+var x = "globalX";
+
+var obj = {
+		x: "instanceX",
+		badCaller: function() {
+			getX();
+		},
+		goodCaller: function() {
+			this.getX();
+		}
+	};
+	
+// explicitly define a getX method in global context
+function getX() {
+	console.log(this.x);
+}
+
+// also assign getX as property of our obj
+obj.getX = getX;
+	
+// correctly calls getX in the context of this.getX in goodCaller
+console.log("Good Caller");
+obj.goodCaller();
+	// prints "instanceX"
+
+console.log("Bad Caller");
+obj.badCaller();
+	// prints "globalX"
+
+</script>
+</head>
+<body>
+</body>
+</html>
