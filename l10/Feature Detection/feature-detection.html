@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+
+<script>
+// to check if a feature is available, test to see if it exists.
+// for properties on objects, this can be done just using a
+// simple if-statement
+if (location.href) {
+    console.log("Supports Location's href Property");
+} else {
+    console.log("No Support for Location's href Property");
+}
+
+if (location.snazzy) {
+    console.log("Supports Location's snazzy Property");
+} else {
+    console.log("No Support for Location's snazzy Property");
+}
+
+// to see if a top-level function or global variable is available,
+// take advantage of the fact that all global variables are properties
+// of the window object
+if (window.location) {
+    console.log("location global variable exists");
+} else {
+    console.log("Does not have a location global variable");
+}
+
+if (window.groovy) {
+    console.log("groovy global variable exists");
+} else {
+    console.log("Does not have a groovy global variable");
+}
+
+// you can't try to see if a top-level function or global variable exists
+// directly, you must try to access it as a property on the window object
+if (groovy) {   // this code will crash if the groovy variable does not exist
+    console.log("groovy global variable exists");
+} else {        // we won't get to the else part
+    console.log("Does not have a groovy global variable");
+}
+</script>
+</body>
+</html>

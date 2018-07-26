@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Test</title>
+</head>
+<body>
+<textarea id="result" rows="2" cols="40">
+</textarea>
+
+
+<script>
+var example =
+	{'name':'patrick', 
+	'dog':'molly'};
+
+// we now add a property to example which refers to itself
+// this creates a self-referential loop
+example.self = example;
+	
+// an object with a circular reference cannot be stringified
+var output = JSON.stringify(example);
+
+document.getElementById("result").value = output;
+</script>
+</body>
+</html>

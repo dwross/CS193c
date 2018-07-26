@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Nesting Absolute</title>
+<style>
+#a {
+	position: absolute;
+	left: 100px;
+	top: 100px;
+	
+	background-color: red;
+	opacity: 0.5;
+	width: 100px;
+	height: 100px;
+	
+	/*overflow: hidden;*/
+}
+
+#b {
+	position: absolute;
+	left: 25px;
+	top: 25px;
+	
+	background-color: green;
+	opacity: 1;
+	width: 100px;
+	height: 100px;
+}
+</style>
+</head>
+<body>
+<p>Absolute positioned element top/left/right/bottom are not actually absolute positioned to the 
+top-left corner of the window.  Instead if the absolute positioned element is contained
+in a parent element that is also absolutely or relatively placed, the "absolutely" placed 
+child element will actually be placed relative to the absolute or relatively placed parent.</p>
+<div id="a">A
+<div id="b">
+B
+</div>
+</div>
+<!-- <img src="quad.jpg" alt="Quad" /> -->
+</body>
+</html>
