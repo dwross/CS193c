@@ -5,6 +5,9 @@
 <title>Stanford Gallery</title>
 <style>
 #caption {
+	position: absolute;
+	bottom: 0px;
+	width: 800px;
 	padding: 10px;
 	box-sizing: border-box;
 	color: white;
@@ -13,17 +16,50 @@
 	background-color: #008800;
 	opacity: 0.5;
 }
+
+#photoSection {
+	position: absolute;
+	left: 100px;
+	top: 50px;
+}
+
+#forwardOverlay {
+	position: absolute;
+	width: 80px;
+	height: 600px;
+	top: 0px;
+	right: 0px;
+}
+
+#backwardOverlay {
+	position: absolute;
+	width: 80px;
+	height: 600px;
+	top: 0px;
+}
+
+p {
+	font-size: 60pt;
+	margin-top: 0px;
+	background-color: rgba(85, 54, 54, 0.5);
+	color: white;
+}
+
 </style>
 </head>
 <body>
-<div id="photoSection">
-<img  id='photo' src='memchu.jpg' alt='photo' />
-<div id="caption">
+	<div id="photoSection">
+		<img id='photo' src='memchu.jpg' alt='photo' />
+		<div id="caption">
 Stanford Memorial Church - the church used to have an 80' bell tower, which fell in the 1906 earthquake.
-</div>
-<div id="forwardOverlay"></div>
-<div id="backwardOverlay"></div>
-</div>
+		</div>
+		<div id="forwardOverlay">
+			<p>&#8680</p>
+		</div>
+		<div id="backwardOverlay">
+			<p>&#8678</p>
+		</div>
+	</div>
 <script>
 "use strict";
 
@@ -41,6 +77,42 @@ var photoArray = [
 		{filename: "stone-river.jpg",
 		 caption: "The Stone River statue near the Cantor Arts Center (Stanford's own art museum)."},
 	];
+
+var photoIndex = 0;
+
+handleResize();
+
+document.getElementById("photo").src = photoArray[photoIndex].filename;
+document.getElementById("caption").innerHMTL = photoArray[photoIndex].caption;
+
+function forwardPicture() {
+	photoIndex++;
+	if (photoIndex === photoArray.length) {
+		photoIndex = 0;
+	}
+	document.getElementById("photo").src = photoArray[photoIndex].filename;
+	document.getElementById("caption").innerHTML = photoArray[photoIndex].caption;
+}
+
+function backwardPicture() {
+	photoIndex--;
+	if (photoIndex === -1) {
+		photoIndex = photoArray.length-1;
+	}
+	document.getElementById("photo").src = photoArray[photoIndex].filename;
+	document.getElementById("caption").innerText = photoArray[photoIndex].caption;
+}
+
+function handleResize() {
+	document.getElementById("photoSection").style.setProperty("left",((window.innerWidth/2)-400).toString()+"px");
+	document.getElementById("photoSection").style.setProperty("top",((window.innerHeight/2)-300).toString()+"px");
+}
+
+window.addEventListener("resize", handleResize, false);
+
+document.getElementById("forwardOverlay").addEventListener("click",forwardPicture,false);
+document.getElementById("backwardOverlay").addEventListener("click",backwardPicture,false);
+
 </script>
 </body>
 </html>
