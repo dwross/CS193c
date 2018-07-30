@@ -25,7 +25,7 @@
 
 #forwardOverlay {
 	position: absolute;
-	width: 80px;
+	width: 400px;
 	height: 600px;
 	top: 0px;
 	right: 0px;
@@ -33,7 +33,7 @@
 
 #backwardOverlay {
 	position: absolute;
-	width: 80px;
+	width: 400px;
 	height: 600px;
 	top: 0px;
 }
@@ -41,8 +41,17 @@
 p {
 	font-size: 60pt;
 	margin-top: 0px;
-	background-color: rgba(85, 54, 54, 0.5);
 	color: white;
+}
+
+#forwardArrow {
+	text-align: justify;
+	text-align-last: right;
+}
+
+#backwardArrow {
+	text-align: justify;
+	text-align-last: left;
 }
 
 </style>
@@ -54,10 +63,10 @@ p {
 Stanford Memorial Church - the church used to have an 80' bell tower, which fell in the 1906 earthquake.
 		</div>
 		<div id="forwardOverlay">
-			<p>&#8680</p>
+			<p id="forwardArrow">&#8680</p>
 		</div>
 		<div id="backwardOverlay">
-			<p>&#8678</p>
+			<p id="backwardArrow">&#8678</p>
 		</div>
 	</div>
 <script>
