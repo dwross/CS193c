@@ -1,0 +1,88 @@
+p {
+  font-size: 36pt;
+  text-align: center;
+  margin: 0px 0px 0px 0px;
+  line-height: 45px;
+}
+
+#mapBorder {
+  border: 20px solid grey;
+  width: 200px;
+  height: 200px;
+  margin: 20px 200px 20px 20px;
+  overflow: hidden;
+}
+
+#controls {
+  position: absolute;
+  right: 0px;
+  top: 20px;
+  width: 200px;
+  height: 300px;
+}
+
+#zoomIn {
+  position: absolute;
+  left: 40px;
+  top: 30px;
+  background-color: lightgray;
+  width: 50px;
+  height: 50px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+#zoomOut {
+  position: absolute;
+  left: 110px;
+  top: 30px;
+  background-color: lightgray;
+  width: 50px;
+  height: 50px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+#moveUp {
+  position: absolute;
+  left: 75px;
+  top: 107px;
+  background-color: lightgray;
+  width: 50px;
+  height: 50px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+#moveRight {
+  position: absolute;
+  left: 128px;
+  top: 160px;
+  background-color: lightgray;
+  width: 50px;
+  height: 50px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+#moveDown {
+  position: absolute;
+  left: 75px;
+  top: 213px;
+  background-color: lightgray;
+  width: 50px;
+  height: 50px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+#moveLeft {
+  position: absolute;
+  left: 22px;
+  top: 160px;
+  background-color: lightgray;
+  width: 50px;
+  height: 50px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
