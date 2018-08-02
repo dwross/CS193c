@@ -76,7 +76,7 @@ function onMap(x,y) {
 				&& y >= getMapTop() && y <= getMapTop() + getMapHeight());
 }
 
-function getWidthCenterOfVisable() {
+function getWidthCenterOfVisible() {
   if (getMapLeft() < 0 && (getMapLeft() + getMapWidth()) > getBorderWidth()) {
     return parseInt(getBorderWidth() / 2);
   }
@@ -97,7 +97,7 @@ function getWidthCenterOfVisable() {
   }
 }
 
-function getHeightCenterOfVisable() {
+function getHeightCenterOfVisible() {
   if (getMapTop() < 0 && (getMapTop() + getMapHeight()) > getBorderHeight()) {
     return parseInt(getBorderHeight() / 2);
   }
@@ -167,6 +167,12 @@ function zoomMapIn() {
   if (mapNumber === 0) {
     document.getElementById("minus").innerHTML="-";    
   }
+  let currentMapLeft = getMapLeft();
+  let currentMapTop = getMapTop();
+  let currentMapWidthCenterPoint = getWidthCenterOfVisible();
+  let currentMapHeightCenterPoint = getHeightCenterOfVisible();
+  let nextMapWidth = mapImages[mapNumber+1].width;
+  let nextMapHeight = mapImages[mapNumber+1].height;
   mapNumber++;
   document.getElementById("mapImage").setAttribute("src",mapImages[mapNumber].src);
 }
@@ -188,19 +194,19 @@ function zoomMapOut() {
 /// NAVIGATION FUNCTIONS
 
 function moveMapLeft() {
-  document.getElementById("mapImage").style.setProperty("left",(getMapLeft() - getWidthCenterOfVisable()) + "px");
+  document.getElementById("mapImage").style.setProperty("left",(getMapLeft() - getWidthCenterOfVisible()) + "px");
 }
 
 function moveMapRight() {
-  document.getElementById("mapImage").style.setProperty("left",(getMapLeft() + getWidthCenterOfVisable()) + "px");
+  document.getElementById("mapImage").style.setProperty("left",(getMapLeft() + getWidthCenterOfVisible()) + "px");
 }
 
 function moveMapUp() {
-  document.getElementById("mapImage").style.setProperty("top",(getMapTop() - getHeightCenterOfVisable()) + "px");
+  document.getElementById("mapImage").style.setProperty("top",(getMapTop() - getHeightCenterOfVisible()) + "px");
 }
 
 function moveMapDown() {
-  document.getElementById("mapImage").style.setProperty("top",(getMapTop() + getHeightCenterOfVisable()) + "px");
+  document.getElementById("mapImage").style.setProperty("top",(getMapTop() + getHeightCenterOfVisible()) + "px");
 }
 
 /// CENTERING FUNCTION
