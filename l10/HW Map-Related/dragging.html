@@ -49,10 +49,16 @@ function inBox(x,y) {
 // mouse button is going down and the actual corner of the box
 
 var isDragging = false;
+var distanceToTop = 0;
+var distanceToLeft = 0;
 
 function handleMouseDown(evt) {
 	if (inBox(evt.clientX,evt.clientY)) {
 		isDragging = true;
+		var box = document.getElementById("box");
+		distanceToLeft = parseInt(box.style.left) - evt.clientX;
+		distanceToTop = parseInt(box.style.top) - evt.clientY;
+
 		evt.preventDefault();
 	}
 }
@@ -60,8 +66,8 @@ function handleMouseDown(evt) {
 function handleMouseUp(evt) {
 	if (isDragging) {
 		var box = document.getElementById("box");
-		box.style.left = evt.clientX + "px";
-		box.style.top = evt.clientY + "px";
+		box.style.left = (distanceToLeft + evt.clientX) + "px";
+		box.style.top = (distanceToTop + evt.clientY) + "px";
 
 		isDragging = false;		
 	}
@@ -70,8 +76,8 @@ function handleMouseUp(evt) {
 function handleMouseMove(evt) {
 	if (isDragging) {
 		var box = document.getElementById("box");
-		box.style.left = evt.clientX + "px";
-		box.style.top = evt.clientY + "px";
+		box.style.left = (distanceToLeft + evt.clientX) + "px";
+		box.style.top = (distanceToTop + evt.clientY) + "px";
 		evt.preventDefault();
 	}
 }

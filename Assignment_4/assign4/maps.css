@@ -3,6 +3,16 @@ p {
   text-align: center;
   margin: 0px 0px 0px 0px;
   line-height: 45px;
+  cursor: default;
+}
+
+p#centerMapText {
+  font-size: 20pt;
+  line-height: 50px;
+}
+
+img {
+  position: relative;
 }
 
 #mapBorder {
@@ -82,6 +92,17 @@ p {
   top: 160px;
   background-color: lightgray;
   width: 50px;
+  height: 50px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+#centerMap {
+  position: absolute;
+  left: 22px;
+  top: 290px;
+  background-color: lightgray;
+  width: 150px;
   height: 50px;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
