@@ -24,15 +24,6 @@ loadMaps();
 
 handleResize();
 
-// function moveIt() {
-//   document.getElementById("mapImage").style.setProperty("left","-100px");
-//   var style = document.defaultView.getComputedStyle(
-//     document.getElementById("mapImage"),"");
-//   alert(parseInt(style.left));
-// }
-
-
-
 /// INFORMATION RETRIEVAL FUNCTIONS
 
 function getBorderWidth() {
@@ -78,16 +69,20 @@ function onMap(x,y) {
 
 function getWidthCenterOfVisible() {
   if (getMapLeft() < 0 && (getMapLeft() + getMapWidth()) > getBorderWidth()) {
-    return parseInt(getBorderWidth() / 2);
+    console.log("Both width outside");
+    return (getBorderWidth() / 2);
   }
   if (getMapLeft() >= 0 && (getMapLeft() + getMapWidth()) <= getBorderWidth()) {
-    return parseInt(getMapWidth() / 2);
+    console.log("Both width inside");
+    return (getMapWidth() / 2);
   }
   if (getMapLeft() < 0 && (getMapLeft() + getMapWidth()) <= getBorderWidth()) {
-    return parseInt((getMapWidth() + getMapLeft()) / 2);
+    console.log("Left width outside");
+    return ((getMapWidth() + getMapLeft()) / 2);
   }
   if (getMapLeft() >= 0 && (getMapLeft() + getMapWidth()) > getBorderWidth()) {
-    return parseInt((getBorderWidth() - getMapLeft()) / 2);
+    console.log("Right width outside");
+    return ((getBorderWidth() - getMapLeft()) / 2);
   }
   if (getMapLeft() > getBorderWidth()) {
     return;
@@ -99,16 +94,20 @@ function getWidthCenterOfVisible() {
 
 function getHeightCenterOfVisible() {
   if (getMapTop() < 0 && (getMapTop() + getMapHeight()) > getBorderHeight()) {
-    return parseInt(getBorderHeight() / 2);
+    console.log("Both height outside");
+    return (getBorderHeight() / 2);
   }
   if (getMapTop() >= 0 && (getMapTop() + getMapHeight()) <= getBorderHeight()) {
-    return parseInt(getMapHeight() / 2);
+    console.log("Both height inside");
+    return (getMapHeight() / 2);
   }
   if (getMapTop() < 0 && (getMapTop() + getMapHeight()) <= getBorderHeight()) {
-    return parseInt((getMapHeight() + getMapTop()) / 2);
+    console.log("Top height outside");
+    return ((getMapHeight() + getMapTop()) / 2);
   }
   if (getMapTop() >= 0 && (getMapTop() + getMapHeight()) > getBorderHeight()) {
-    return parseInt((getBorderHeight() - getMapTop()) / 2);
+    console.log("Bottom height outside");
+    return ((getBorderHeight() - getMapTop()) / 2);
   }
   if (getMapTop() > getBorderHeight()) {
     return;
@@ -173,8 +172,20 @@ function zoomMapIn() {
   let currentMapHeightCenterPoint = getHeightCenterOfVisible();
   let nextMapWidth = mapImages[mapNumber+1].width;
   let nextMapHeight = mapImages[mapNumber+1].height;
+  // console.log(currentMapLeft);
+  // console.log(currentMapTop);
+  // console.log(currentMapWidthCenterPoint);
+  // console.log(currentMapHeightCenterPoint);
+  // console.log(nextMapWidth);
+  // console.log(nextMapHeight);
+  let moveLeftAmount = currentMapWidthCenterPoint*(((1/getMapWidth())*nextMapWidth) - 1);
+  let moveTopAmount = currentMapHeightCenterPoint*(((1/getMapHeight())*nextMapHeight) - 1);
+  // console.log(moveLeftAmount);
+  // console.log(moveTopAmount);
   mapNumber++;
   document.getElementById("mapImage").setAttribute("src",mapImages[mapNumber].src);
+  document.getElementById("mapImage").style.setProperty("left",(currentMapLeft - moveLeftAmount) + "px");
+  document.getElementById("mapImage").style.setProperty("top",(currentMapTop - moveTopAmount) + "px");
 }
 
 function zoomMapOut() {
@@ -187,29 +198,37 @@ function zoomMapOut() {
   if (mapNumber === mapImages.length-1) {
     document.getElementById("plus").innerHTML="+";
   }
+  let currentMapLeft = getMapLeft();
+  let currentMapTop = getMapTop();
+  let currentMapWidthCenterPoint = getWidthCenterOfVisible();
+  let currentMapHeightCenterPoint = getHeightCenterOfVisible();
+  let nextMapWidth = mapImages[mapNumber-1].width;
+  let nextMapHeight = mapImages[mapNumber-1].height;
+  let moveLeftAmount = currentMapWidthCenterPoint*(1 - ((1/getMapWidth())*nextMapWidth));
+  let moveTopAmount = currentMapHeightCenterPoint*(1 - ((1/getMapHeight())*nextMapHeight));
   mapNumber--;
   document.getElementById("mapImage").setAttribute("src",mapImages[mapNumber].src);
+  document.getElementById("mapImage").style.setProperty("left",(currentMapLeft + moveLeftAmount) + "px");
+  document.getElementById("mapImage").style.setProperty("top",(currentMapTop + moveTopAmount) + "px");
 }
 
 /// NAVIGATION FUNCTIONS
 
 function moveMapLeft() {
-  document.getElementById("mapImage").style.setProperty("left",(getMapLeft() - getWidthCenterOfVisible()) + "px");
+  document.getElementById("mapImage").style.setProperty("left",(getMapLeft() - (getBorderWidth() / 2)) + "px");
 }
 
 function moveMapRight() {
-  document.getElementById("mapImage").style.setProperty("left",(getMapLeft() + getWidthCenterOfVisible()) + "px");
+  document.getElementById("mapImage").style.setProperty("left",(getMapLeft() + (getBorderWidth() / 2)) + "px");
 }
 
 function moveMapUp() {
-  document.getElementById("mapImage").style.setProperty("top",(getMapTop() - getHeightCenterOfVisible()) + "px");
+  document.getElementById("mapImage").style.setProperty("top",(getMapTop() - (getBorderHeight() / 2)) + "px");
 }
 
 function moveMapDown() {
-  document.getElementById("mapImage").style.setProperty("top",(getMapTop() + getHeightCenterOfVisible()) + "px");
+  document.getElementById("mapImage").style.setProperty("top",(getMapTop() + (getBorderHeight() / 2)) + "px");
 }
-
-/// CENTERING FUNCTION
 
 function centerMap() {
   let newLeft = (getBorderWidth() / 2) - (getMapWidth() / 2);
@@ -217,18 +236,6 @@ function centerMap() {
   document.getElementById("mapImage").style.setProperty("left",newLeft + "px");
   document.getElementById("mapImage").style.setProperty("top",newTop + "px");
 }
-
-// function getMapInfo() {
-//   console.log(getWidthCenterOfVisable());
-//   console.log(getHeightCenterOfVisable());
-//   console.log(getMapLeft());
-//   console.log(getMapTop());
-//   console.log(getMapWidth());
-//   console.log(getMapHeight());
-//   console.log(getBorderWidth());
-//   console.log(getBorderHeight());
-// }
-
 
 /// SETUP FUNCTIONS
 
