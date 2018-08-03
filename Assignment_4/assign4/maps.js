@@ -237,6 +237,26 @@ function centerMap() {
   document.getElementById("mapImage").style.setProperty("top",newTop + "px");
 }
 
+function moveMapToPoint(evt) {
+  if (onMap(evt.clientX-40,evt.clientY-40)) {
+    let newLeft = 0;
+    if (evt.clientX < (getBorderWidth() / 2)) {
+      newLeft = getMapLeft() + ((getBorderWidth() / 2) - evt.clientX);
+    } else {
+      newLeft = getMapLeft() - (evt.clientX - (getBorderWidth() / 2));
+    }
+    document.getElementById("mapImage").style.setProperty("left",newLeft + "px");
+    let newTop = 0;
+    if (evt.clientY < (getBorderHeight() / 2)) {
+      newTop = getMapTop() + ((getBorderHeight() / 2) - evt.clientY);
+    } else {
+      newTop = getMapTop() - (evt.clientY - (getBorderHeight() / 2));
+    }
+    document.getElementById("mapImage").style.setProperty("top",newTop + "px");
+    evt.preventDefault();
+  }
+}
+
 /// SETUP FUNCTIONS
 
 window.addEventListener("resize", handleResize, false);
@@ -254,3 +274,5 @@ document.getElementById("moveDown").addEventListener("click",moveMapDown,false);
 document.getElementById("moveLeft").addEventListener("click",moveMapLeft,false);
 
 document.getElementById("centerMap").addEventListener("click",centerMap,false);
+
+document.addEventListener("dblclick",moveMapToPoint,false);
