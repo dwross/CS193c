@@ -6,6 +6,8 @@ var mapWidths = [];
 var mapHeights = [];
 var mapImages = new Array();
 
+/// STARTUP FUNCTIONS
+
 function loadMaps() {
   for ( let i=0; i<mapFiles.length; i++) {
     mapImages[i] = new Image();
@@ -17,7 +19,7 @@ function loadMaps() {
 
 function handleResize() {
 	document.getElementById("mapBorder").style.setProperty("width",(window.innerWidth- 280).toString()+"px");
-	document.getElementById("mapBorder").style.setProperty("height",(window.innerHeight-80).toString()+"px");
+  document.getElementById("mapBorder").style.setProperty("height",(window.innerHeight-80).toString()+"px");
 }
 
 loadMaps();
@@ -67,54 +69,10 @@ function onMap(x,y) {
 				&& y >= getMapTop() && y <= getMapTop() + getMapHeight());
 }
 
-function getWidthCenterOfVisible() {
-  if (getMapLeft() < 0 && (getMapLeft() + getMapWidth()) > getBorderWidth()) {
-    console.log("Both width outside");
-    return (getBorderWidth() / 2);
-  }
-  if (getMapLeft() >= 0 && (getMapLeft() + getMapWidth()) <= getBorderWidth()) {
-    console.log("Both width inside");
-    return (getMapWidth() / 2);
-  }
-  if (getMapLeft() < 0 && (getMapLeft() + getMapWidth()) <= getBorderWidth()) {
-    console.log("Left width outside");
-    return ((getMapWidth() + getMapLeft()) / 2);
-  }
-  if (getMapLeft() >= 0 && (getMapLeft() + getMapWidth()) > getBorderWidth()) {
-    console.log("Right width outside");
-    return ((getBorderWidth() - getMapLeft()) / 2);
-  }
-  if (getMapLeft() > getBorderWidth()) {
-    return;
-  }
-  if ((getMapLeft() + getMapWidth()) < 0) {
-    return;
-  }
-}
-
-function getHeightCenterOfVisible() {
-  if (getMapTop() < 0 && (getMapTop() + getMapHeight()) > getBorderHeight()) {
-    console.log("Both height outside");
-    return (getBorderHeight() / 2);
-  }
-  if (getMapTop() >= 0 && (getMapTop() + getMapHeight()) <= getBorderHeight()) {
-    console.log("Both height inside");
-    return (getMapHeight() / 2);
-  }
-  if (getMapTop() < 0 && (getMapTop() + getMapHeight()) <= getBorderHeight()) {
-    console.log("Top height outside");
-    return ((getMapHeight() + getMapTop()) / 2);
-  }
-  if (getMapTop() >= 0 && (getMapTop() + getMapHeight()) > getBorderHeight()) {
-    console.log("Bottom height outside");
-    return ((getBorderHeight() - getMapTop()) / 2);
-  }
-  if (getMapTop() > getBorderHeight()) {
-    return;
-  }
-  if ((getMapTop() + getMapHeight()) < 0) {
-    return;
-  }
+function centerOverMap() {
+  let widthCenter = getBorderWidth() / 2;
+  let heightCenter = getBorderHeight() / 2;
+  return onMap(widthCenter, heightCenter);
 }
 
 /// DRAGGING FUNCTIONS
@@ -157,59 +115,51 @@ function handleMouseMove(evt) {
 /// ZOOMING FUNCTIONS
 
 function zoomMapIn() {
-  if (mapNumber === mapImages.length-1) {
-    return;
+  if (centerOverMap()) {
+    if (mapNumber === mapImages.length-1) {
+      return;
+    }
+    if (mapNumber === mapImages.length-2){
+      document.getElementById("plus").innerHTML="";
+    }
+    if (mapNumber === 0) {
+      document.getElementById("minus").innerHTML="-";    
+    }
+    let widthCenter = getBorderWidth() / 2;
+    let heightCenter = getBorderHeight() / 2;
+    let nextMapWidth = mapImages[mapNumber+1].width;
+    let nextMapHeight = mapImages[mapNumber+1].height;
+    let newLeft = (nextMapWidth*((getMapLeft() - widthCenter)/getMapWidth())) + widthCenter;
+    let newTop = (nextMapHeight*((getMapTop() - heightCenter)/getMapHeight())) + heightCenter;
+    mapNumber++;
+    document.getElementById("mapImage").setAttribute("src",mapImages[mapNumber].src);
+    document.getElementById("mapImage").style.setProperty("left",newLeft + "px");
+    document.getElementById("mapImage").style.setProperty("top",newTop + "px");
   }
-  if (mapNumber === mapImages.length-2){
-    document.getElementById("plus").innerHTML="";
-  }
-  if (mapNumber === 0) {
-    document.getElementById("minus").innerHTML="-";    
-  }
-  let currentMapLeft = getMapLeft();
-  let currentMapTop = getMapTop();
-  let currentMapWidthCenterPoint = getWidthCenterOfVisible();
-  let currentMapHeightCenterPoint = getHeightCenterOfVisible();
-  let nextMapWidth = mapImages[mapNumber+1].width;
-  let nextMapHeight = mapImages[mapNumber+1].height;
-  // console.log(currentMapLeft);
-  // console.log(currentMapTop);
-  // console.log(currentMapWidthCenterPoint);
-  // console.log(currentMapHeightCenterPoint);
-  // console.log(nextMapWidth);
-  // console.log(nextMapHeight);
-  let moveLeftAmount = currentMapWidthCenterPoint*(((1/getMapWidth())*nextMapWidth) - 1);
-  let moveTopAmount = currentMapHeightCenterPoint*(((1/getMapHeight())*nextMapHeight) - 1);
-  // console.log(moveLeftAmount);
-  // console.log(moveTopAmount);
-  mapNumber++;
-  document.getElementById("mapImage").setAttribute("src",mapImages[mapNumber].src);
-  document.getElementById("mapImage").style.setProperty("left",(currentMapLeft - moveLeftAmount) + "px");
-  document.getElementById("mapImage").style.setProperty("top",(currentMapTop - moveTopAmount) + "px");
 }
 
 function zoomMapOut() {
-  if (mapNumber === 0) {
-    return;
+  if (centerOverMap()) {
+    if (mapNumber === 0) {
+      return;
+    }
+    if (mapNumber === 1){
+      document.getElementById("minus").innerHTML="";
+    }
+    if (mapNumber === mapImages.length-1) {
+      document.getElementById("plus").innerHTML="+";
+    }
+    let widthCenter = getBorderWidth() / 2;
+    let heightCenter = getBorderHeight() / 2;
+    let nextMapWidth = mapImages[mapNumber-1].width;
+    let nextMapHeight = mapImages[mapNumber-1].height;
+    let newLeft = (nextMapWidth*((getMapLeft() - widthCenter)/getMapWidth())) + widthCenter;
+    let newTop = (nextMapHeight*((getMapTop() - heightCenter)/getMapHeight())) + heightCenter;
+    mapNumber--;
+    document.getElementById("mapImage").setAttribute("src",mapImages[mapNumber].src);
+    document.getElementById("mapImage").style.setProperty("left",newLeft + "px");
+    document.getElementById("mapImage").style.setProperty("top",newTop + "px");
   }
-  if (mapNumber === 1){
-    document.getElementById("minus").innerHTML="";
-  }
-  if (mapNumber === mapImages.length-1) {
-    document.getElementById("plus").innerHTML="+";
-  }
-  let currentMapLeft = getMapLeft();
-  let currentMapTop = getMapTop();
-  let currentMapWidthCenterPoint = getWidthCenterOfVisible();
-  let currentMapHeightCenterPoint = getHeightCenterOfVisible();
-  let nextMapWidth = mapImages[mapNumber-1].width;
-  let nextMapHeight = mapImages[mapNumber-1].height;
-  let moveLeftAmount = currentMapWidthCenterPoint*(1 - ((1/getMapWidth())*nextMapWidth));
-  let moveTopAmount = currentMapHeightCenterPoint*(1 - ((1/getMapHeight())*nextMapHeight));
-  mapNumber--;
-  document.getElementById("mapImage").setAttribute("src",mapImages[mapNumber].src);
-  document.getElementById("mapImage").style.setProperty("left",(currentMapLeft + moveLeftAmount) + "px");
-  document.getElementById("mapImage").style.setProperty("top",(currentMapTop + moveTopAmount) + "px");
 }
 
 /// NAVIGATION FUNCTIONS
@@ -238,19 +188,21 @@ function centerMap() {
 }
 
 function moveMapToPoint(evt) {
-  if (onMap(evt.clientX-40,evt.clientY-40)) {
+  if (onMap(evt.clientX,evt.clientY)) {
+    let evtX = evt.clientX - 40;
+    let evtY = evt.clientY - 40;
     let newLeft = 0;
-    if (evt.clientX < (getBorderWidth() / 2)) {
-      newLeft = getMapLeft() + ((getBorderWidth() / 2) - evt.clientX);
+    if (evtX < (getBorderWidth() / 2)) {
+      newLeft = getMapLeft() + ((getBorderWidth() / 2) - evtX);
     } else {
-      newLeft = getMapLeft() - (evt.clientX - (getBorderWidth() / 2));
+      newLeft = getMapLeft() - (evtX - (getBorderWidth() / 2));
     }
     document.getElementById("mapImage").style.setProperty("left",newLeft + "px");
     let newTop = 0;
-    if (evt.clientY < (getBorderHeight() / 2)) {
-      newTop = getMapTop() + ((getBorderHeight() / 2) - evt.clientY);
+    if (evtY < (getBorderHeight() / 2)) {
+      newTop = getMapTop() + ((getBorderHeight() / 2) - evtY);
     } else {
-      newTop = getMapTop() - (evt.clientY - (getBorderHeight() / 2));
+      newTop = getMapTop() - (evtY - (getBorderHeight() / 2));
     }
     document.getElementById("mapImage").style.setProperty("top",newTop + "px");
     evt.preventDefault();
