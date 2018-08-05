@@ -99,6 +99,8 @@ function changeStuff() {
 function notLikeThis() {
 	$("li")[0].addClass("blueElements");
 		// doesn't work -- individual array element is a DOM element, not part of JQuery
+	$("li").forEach((x) => console.log(x));
+		// this doesn't work either.  It's not a real array, just array-like
 }
 
 $("#theButton").bind("click",changeStuff);
