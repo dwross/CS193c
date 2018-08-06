@@ -2,8 +2,6 @@
 
 var mapNumber = 1;
 var mapFiles = ["map-s.gif", "map-m.gif", "map-l.gif", "map-xl.gif"];
-var mapWidths = [];
-var mapHeights = [];
 var mapImages = new Array();
 
 /// STARTUP FUNCTIONS
