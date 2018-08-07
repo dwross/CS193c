@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>City Search</title>
+    <script src="cities-list.js" defer></script>
+    <style>
+      div {
+        margin: 20px 0px 20px 10px;
+      }
+    </style>
+  </head>
+  <body>
+      <h1>Search Criteria</h1>
+      <div>
+      <label for="minDen">Minimum Density</label>
+      <input class = "miDen" id="minDen" type="text" value="" name="density" size="12" />
+      </div>
+      <div>
+      <label for="maxDen">Maximum Density</label>
+      <input class = "maDen" id="maxDen" type="text" value="" name="density" size="12" />
+      </div>
+      <div>
+      <input type="button" id="searchCities" value="Search"  />
+     </div>
+      <h1>Results</h1>
+      <div id="resultsTable">
+        <table id="resultsTableContainer"></table>
+      </div>
+    <script>
+      "use strict";
+      document.getElementById("resultsTableContainer").innerHTML = "<tr class='tableHeaderRow'><td>Enter Search Criteria</td>";
+      function searchCities() {
+        let listitems = "";
+        let cityListSize = citiesList.length;
+        let minInput = document.getElementsByClassName("miDen")[0].value;
+        if (minInput === "") {
+          minInput = 0;
+        }
+        let maxInput = document.getElementsByClassName("maDen")[0].value;
+        if (maxInput === "") {
+          maxInput = Number.MAX_SAFE_INTEGER;
+        }
+	      for(let i = 0; i<cityListSize; i++){
+		      if ((citiesList[i].density >= minInput) &&  (maxInput >= citiesList[i].density)) {
+            listitems = listitems + "<tr>" + "<h3>" + citiesList[i].name + "</h3>" +
+            "</tr><tr>" + citiesList[i].country +
+            "</tr><tr>" + "population: " + citiesList[i].population +
+            "</tr><td>" + "area: " + citiesList[i].area + " square km" + 
+            "</tr><td>" + "density: " + citiesList[i].density + " per square km" + "</tr>";
+          }
+		    }
+	      let tbdy = document.getElementById('resultsTableContainer').getElementsByTagName('tbody')[0];
+	      tbdy.innerHTML = listitems;
+      }
+      var button = document.getElementById("searchCities");
+      button.addEventListener("click",searchCities,false);
+    </script>
+  </body>
+</html>

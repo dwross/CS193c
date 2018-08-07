@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Rectangle</title>
+    <style>
+      #main {
+        display: grid;
+        grid-template-columns: 2fr 250px;
+        grid-template-rows: auto;
+      }
+
+      #rect {
+        position: absolute;
+        margin: 0px 0px 0px 0px;
+        grid-column-start: 1;
+        grid-row-start: 1;
+        /* border: 1px solid black;
+        width: 100px;
+        height: 100px;
+        left: 100px;
+        top: 100px; */
+      }
+
+      #controls {
+        margin: 20px 20px 20px 20px;
+        border: 1px solid black;
+        grid-column-start: 2;
+        grid-row-start: 1;
+      }
+      .rectInput {
+        margin: 10px 10px 10px 0px;
+      }
+
+      label {
+        margin: 10px 0px 10px 20px;
+      }
+      
+      .colorList {
+        margin: 10px 10px 10px 10px;
+      }
+
+      .rectButton {
+        margin: 10px 10px 10px 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="rect"></div>
+      <div id="controls">
+        <div>
+          <label for="rectX">x:</label>
+          <input class = "rectInput" id="rectX" type="text" value=""  size="12" />
+        </div>
+        <div>
+          <label for="rectY">y:</label>
+          <input class = "rectInput" id="rectY" type="text" value=""  size="12" />
+        </div>
+        <div>
+          <label for="rectWidth">width:</label>
+          <input class = "rectInput" id="rectWidth" type="text" value=""  size="12" />
+        </div>
+        <div>
+          <label for="rectHeight">height:</label>
+          <input class = "rectInput" id="rectHeight" type="text" value=""  size="12" />
+        </div>
+        <form id="chooseColor">
+          <select class = "colorList" name="rectColor" size="1">
+            <option selected="selected" value="white">white</option>
+            <option value="red">red</option>
+            <option value="green">green</option>
+            <option value="blue">blue</option>
+          </select>
+        </form>
+        <div>
+          <input class = "rectButton" type="button" id="rectUpdate" value="Update"  />
+          <input class = "rectButton" type="button" id="rectDelete" value="Delete"  />
+        </div>
+      </div>
+    </div>
+    <script>
+      "use strict";
+      
+      function updateRect() {
+        let recInput = document.getElementsByClassName("rectInput");
+        let rectStyle = document.getElementById("rect");
+        let newRectColor = document.getElementById("chooseColor").rectColor.value;
+
+        var style = document.defaultView.getComputedStyle(document.getElementById("rect"),"");
+
+
+
+        console.log(style.left );
+        rectStyle.style.setProperty("left",recInput[0].value + "px");
+        rectStyle.style.setProperty("top",recInput[1].value + "px");
+        rectStyle.style.setProperty("width",recInput[2].value + "px");
+        rectStyle.style.setProperty("height",recInput[3].value + "px");
+        rectStyle.style.setProperty("border","1px solid " + newRectColor);
+      }
+
+      function deleteRect() {
+
+
+
+      }
+
+      var button = document.getElementById("rectUpdate");
+      button.addEventListener("click",updateRect,false);
+      var button = document.getElementById("rectDelete");
+      button.addEventListener("click",deleteRect,false);
+    </script>
+  </body>
+</html>
