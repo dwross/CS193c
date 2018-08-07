@@ -15,11 +15,6 @@
         margin: 0px 0px 0px 0px;
         grid-column-start: 1;
         grid-row-start: 1;
-        /* border: 1px solid black;
-        width: 100px;
-        height: 100px;
-        left: 100px;
-        top: 100px; */
       }
 
       #controls {
@@ -87,12 +82,6 @@
         let recInput = document.getElementsByClassName("rectInput");
         let rectStyle = document.getElementById("rect");
         let newRectColor = document.getElementById("chooseColor").rectColor.value;
-
-        var style = document.defaultView.getComputedStyle(document.getElementById("rect"),"");
-
-
-
-        console.log(style.left );
         rectStyle.style.setProperty("left",recInput[0].value + "px");
         rectStyle.style.setProperty("top",recInput[1].value + "px");
         rectStyle.style.setProperty("width",recInput[2].value + "px");
