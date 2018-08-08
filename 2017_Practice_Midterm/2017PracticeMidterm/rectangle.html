@@ -62,7 +62,7 @@
           <input class = "rectInput" id="rectHeight" type="text" value=""  size="12" />
         </div>
         <form id="chooseColor">
-          <select class = "colorList" name="rectColor" size="1">
+          <select id = "cList" class = "colorList" name="rectColor" size="1">
             <option selected="selected" value="white">white</option>
             <option value="red">red</option>
             <option value="green">green</option>
@@ -77,28 +77,111 @@
     </div>
     <script>
       "use strict";
+
+      var oneClick = false;
+      var twoClick = false;
+      var oneClickX = 0;
+      var oneClickY = 0;
+      var twoClickX = 0;
+      var twoClickY = 0;
+      var newLeft = 0;
+      var newTop = 0;
+      var newWidth = 0;
+      var newHeight = 0;
+
+      function handleMouseDown(evt) {
+        if (oneClick === false) {
+          oneClickX = evt.clientX;
+          oneClickY = evt.clientY;
+          oneClick = true;
+          return;
+        }
+        if ((oneClick === true) && (twoClick === false)) {
+          twoClickX = evt.clientX;
+          twoClickY = evt.clientY;
+          twoClick = true;
+          if ((oneClickY >= twoClickY) && (oneClickX <= twoClickX)) {
+            newLeft = oneClickX;
+            newTop = twoClickY;
+            newWidth = twoClickX - oneClickX;
+            newHeight = oneClickY - twoClickY;
+          }
+          if ((oneClickY < twoClickY) && (oneClickX <= twoClickX)) {
+            newLeft = oneClickX;
+            newTop = oneClickY;
+            newWidth = twoClickX - oneClickX;
+            newHeight = twoClickY - oneClickY;
+          }
+          if ((oneClickY >= twoClickY) && (oneClickX > twoClickX)) {
+            newLeft = twoClickX;
+            newTop = twoClickY;
+            newWidth = oneClickX - twoClickX;
+            newHeight = oneClickY - twoClickY;
+          }
+          if ((oneClickY < twoClickY) && (oneClickX > twoClickX)) {
+            newLeft = twoClickX;
+            newTop = oneClickY;
+            newWidth = oneClickX - twoClickX;
+            newHeight = twoClickY - oneClickY;
+          }
+          let rectStyle = document.getElementById("rect");
+          rectStyle.style.setProperty("left",newLeft + "px");
+          rectStyle.style.setProperty("top",newTop + "px");
+          rectStyle.style.setProperty("width",newWidth + "px");
+          rectStyle.style.setProperty("height",newHeight + "px");
+          rectStyle.style.setProperty("border","1px solid black");
+          document.getElementById("rectX").setAttribute("value", newLeft);
+          document.getElementById("rectY").setAttribute("value", newTop);
+          document.getElementById("rectWidth").setAttribute("value", newWidth);
+          document.getElementById("rectHeight").setAttribute("value", newHeight);
+        }
+      }
       
       function updateRect() {
-        let recInput = document.getElementsByClassName("rectInput");
-        let rectStyle = document.getElementById("rect");
-        let newRectColor = document.getElementById("chooseColor").rectColor.value;
-        rectStyle.style.setProperty("left",recInput[0].value + "px");
-        rectStyle.style.setProperty("top",recInput[1].value + "px");
-        rectStyle.style.setProperty("width",recInput[2].value + "px");
-        rectStyle.style.setProperty("height",recInput[3].value + "px");
-        rectStyle.style.setProperty("border","1px solid " + newRectColor);
+        if (twoClick) {
+          let recInput = document.getElementsByClassName("rectInput");
+          let rectStyle = document.getElementById("rect");
+          let newRectColor = document.getElementById("chooseColor").rectColor.value;
+          rectStyle.style.setProperty("left",recInput[0].value + "px");
+          rectStyle.style.setProperty("top",recInput[1].value + "px");
+          rectStyle.style.setProperty("width",recInput[2].value + "px");
+          rectStyle.style.setProperty("height",recInput[3].value + "px");
+          rectStyle.style.setProperty("border","1px solid " + newRectColor);
+        }
       }
 
       function deleteRect() {
-
-
-
+        oneClick = false;
+        twoClick = false;
+        oneClickX = 0;
+        oneClickY = 0;
+        twoClickX = 0;
+        twoClickY = 0;
+        newLeft = 0;
+        newTop = 0;
+        newWidth = 0;
+        newHeight = 0;
+        let rectStyle = document.getElementById("rect");
+        rectStyle.style.setProperty("left",newLeft + "px");
+        rectStyle.style.setProperty("top",newTop + "px");
+        rectStyle.style.setProperty("width",newWidth + "px");
+        rectStyle.style.setProperty("height",newHeight + "px");
+        rectStyle.style.setProperty("border","1px solid white");
+        let recInput = document.getElementsByClassName("rectInput");
+        for (let i = 0; i < recInput.length; i++){
+          recInput[i].value = "";
+        }
+        document.getElementById("cList").selectedIndex = 0;
       }
 
       var button = document.getElementById("rectUpdate");
       button.addEventListener("click",updateRect,false);
+
       var button = document.getElementById("rectDelete");
       button.addEventListener("click",deleteRect,false);
+
+      document.addEventListener("mousedown",handleMouseDown,false);
+
     </script>
   </body>
 </html>

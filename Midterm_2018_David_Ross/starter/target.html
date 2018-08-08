@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bullseye Target</title>
+    <style>
+      #lower {
+        display: grid;
+        grid-template-columns: 40px 40px 120px 1fr;
+        grid-template-rows: auto;
+      }
+
+      #one {
+        grid-column-start: 1;
+        grid-row-start: 1;    
+        border: solid 1pt white;
+        width: 40px;
+        height: 140px;   
+      }
+
+      #two {
+        padding: 0pt 0pt 0pt 40pt;
+        grid-column-start: 2;
+        grid-row-start: 1;   
+        border: solid 1pt white;
+        width: 40px;
+        height: 140px;        
+      }
+
+      #three {
+        grid-column-start: 3;
+        grid-row-start: 1;    
+        border: solid 1pt white;
+        width: 120px;
+        height: 140px;       
+      }
+
+      #four {
+        grid-column-start: 4;
+        grid-row-start: 1;    
+        border: solid 1pt black;
+        width: 400px;
+        height: 400px;       
+      }
+
+      #userInput {
+        margin: 0px 0px 20px 0px;
+      }
+
+      body {
+        margin-left: calc((100% - 750px) / 2);
+      }
+
+      #ringSlider {
+        width: 140px;
+        height: 140px;
+        background: #d3d3d3;
+        transform: rotate(90deg);
+      }
+
+      .red {
+        border: solid 10pt red;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="upper">
+        <h1>Bullseye Target</h1>
+        <form>
+          <label for="userInput">Rings:</label>
+          <input id="userInput" type="text" value="5"  size="20" onchange="updateRings()" />
+        </form>
+      </div>
+      <div id="lower">
+        <div id="one">
+            <input type="range" min="10" max="100" value="10" class="slider" id="ringSlider">
+        </div>
+        <div id="two">
+          10
+        </div>
+        <div id="three">
+
+        </div>
+        <div id="four">
+          <div id="bullseyeContainer"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      "use strict";
+
+      var listitems = "";
+
+      function updateRings() {
+        let currValue = document.getElementById("userInput").value;
+        let ringSize = document.getElementById("ringSlider").value;
+        // for (let i=1; i=currValue; i++) {
+          // listitems = listitems + "<div class='red' width='" + ringSize*i + "' height='" + ringSize*i + "' </div>"
+
+        // }
+        // document.getElementById("bullseyeContainer").innerHTML = listitems;
+      }
+
+      function getSliderValue() {
+        let ringSize = document.getElementById("ringSlider").value;
+        document.getElementById("two").innerHTML = ringSize;
+      }
+
+      document.getElementById("ringSlider").addEventListener("input",getSliderValue,false);
+
+    </script>
+  </body>
+</html>

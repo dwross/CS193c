@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Telephone</title>
+    <style>
+      #lower {
+        display: grid;
+        grid-template-columns: 79px 79px 79px;
+        grid-template-rows: 79px 79px 79px 79px;
+      }
+
+      #one {
+        grid-column-start: 1;
+        grid-row-start: 1;        
+      }
+
+      #two {
+        grid-column-start: 2;
+        grid-row-start: 1;        
+      }
+
+      #three {
+        grid-column-start: 3;
+        grid-row-start: 1;        
+      }
+
+      #four {
+        grid-column-start: 1;
+        grid-row-start: 2;        
+      }
+
+      #five {
+        grid-column-start: 2;
+        grid-row-start: 2;        
+      }
+
+      #six {
+        grid-column-start: 3;
+        grid-row-start: 2;        
+      }
+
+      #seven {
+        grid-column-start: 1;
+        grid-row-start: 3;        
+      }
+
+      #eight {
+        grid-column-start: 2;
+        grid-row-start: 3;        
+      }
+
+      #nine {
+        grid-column-start: 3;
+        grid-row-start: 3;        
+      }
+
+      #zero {
+        grid-column-start: 2;
+        grid-row-start: 4;        
+      }
+
+      #userInput {
+        margin: 0px 0px 20px 0px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="upper">
+        <h1>Telephone</h1>
+        <form>
+          <input id="userInput" type="text" value=""  size="20" />
+          <input type="button" id="dialButton" value="Dial"  />
+        </form>
+      </div>
+      <div id="lower">
+        <div id="one">
+          <img class="telButton" id="button1" src="1.png" alt="One Button" />
+        </div>
+        <div id="two">
+            <img class="telButton" id="button2" src="2.png" alt="Two Button" />
+        </div>
+        <div id="three">
+            <img class="telButton" id="button3" src="3.png" alt="Three Button" />
+        </div>
+        <div id="four">
+            <img class="telButton" id="button4" src="4.png" alt="Four Button" />
+        </div>
+        <div id="five">
+            <img class="telButton" id="button5" src="5.png" alt="Five Button" />
+        </div>
+        <div id="six">
+            <img class="telButton" id="button6" src="6.png" alt="Six Button" />
+        </div>
+        <div id="seven">
+            <img class="telButton" id="button7" src="7.png" alt="Seven Button" />
+        </div>
+        <div id="eight">
+            <img class="telButton" id="button8" src="8.png" alt="Eight Button" />
+        </div>
+        <div id="nine">
+            <img class="telButton" id="button9" src="9.png" alt="Nine Button" />
+        </div>
+        <div id="zero">
+            <img class="telButton" id="button0" src="0.png" alt="Zero Button" />
+        </div>
+      </div>
+    </div>
+    <script>
+      "use strict";
+
+      var timerCounter = 1;
+
+      function buttonDark(buttonNumber) {
+        let targetButton = document.getElementById("button" + buttonNumber);
+        targetButton.setAttribute("src", buttonNumber + ".png");
+      }
+
+      function buttonDown(buttonNumber) {
+        let targetButton = document.getElementById("button" + buttonNumber);
+        targetButton.setAttribute("src", buttonNumber + "b.png");
+        setTimeout( () => { buttonDark(buttonNumber); }, 600 * timerCounter);
+        timerCounter++;
+      }
+
+      function dialNumbers() {
+        let textPanel = document.getElementById("userInput");
+        let textPanelLength = textPanel.value.length;
+        for (let i=0; i<textPanelLength; i++) {
+          if (textPanel.value[i] === "1") {
+            buttonDown("1");
+          }else if (textPanel.value[i] === "2") {
+            buttonDown("2");            
+          }else if (textPanel.value[i] === "3") {
+            buttonDown("3");
+          }else if (textPanel.value[i] === "4") {
+            buttonDown("4");
+          }else if (textPanel.value[i] === "5") {
+            buttonDown("5");
+          }else if (textPanel.value[i] === "6") {
+            buttonDown("6");            
+          }else if (textPanel.value[i] === "7") {
+            buttonDown("7");  
+          }else if (textPanel.value[i] === "8") {
+            buttonDown("8"); 
+          }else if (textPanel.value[i] === "9") {
+            buttonDown("9"); 
+          }else if (textPanel.value[i] === "0") {
+            buttonDown("0"); 
+          }
+        }
+        document.getElementById("userInput").value = "";
+        timerCounter = 1;
+      }
+
+      document.getElementById("button1").addEventListener("click",() => {
+        let textPanel = document.getElementById("userInput");
+        let newValue = textPanel.value + "1";
+        textPanel.setAttribute("value",newValue);
+        },false);
+      document.getElementById("button2").addEventListener("click",() => {
+        let textPanel = document.getElementById("userInput");
+        let newValue = textPanel.value + "2";
+        textPanel.setAttribute("value",newValue);
+        },false);
+      document.getElementById("button3").addEventListener("click",() => {
+        let textPanel = document.getElementById("userInput");
+        let newValue = textPanel.value + "3";
+        textPanel.setAttribute("value",newValue);
+        },false);
+      document.getElementById("button4").addEventListener("click",() => {
+        let textPanel = document.getElementById("userInput");
+        let newValue = textPanel.value + "4";
+        textPanel.setAttribute("value",newValue);
+        },false);
+      document.getElementById("button5").addEventListener("click",() => {
+        let textPanel = document.getElementById("userInput");
+        let newValue = textPanel.value + "5";
+        textPanel.setAttribute("value",newValue);
+        },false);
+      document.getElementById("button6").addEventListener("click",() => {
+        let textPanel = document.getElementById("userInput");
+        let newValue = textPanel.value + "6";
+        textPanel.setAttribute("value",newValue);
+        },false);
+      document.getElementById("button7").addEventListener("click",() => {
+        let textPanel = document.getElementById("userInput");
+        let newValue = textPanel.value + "7";
+        textPanel.setAttribute("value",newValue);
+        },false);
+      document.getElementById("button8").addEventListener("click",() => {
+        let textPanel = document.getElementById("userInput");
+        let newValue = textPanel.value + "8";
+        textPanel.setAttribute("value",newValue);
+        },false);
+      document.getElementById("button9").addEventListener("click",() => {
+        let textPanel = document.getElementById("userInput");
+        let newValue = textPanel.value + "9";
+        textPanel.setAttribute("value",newValue);
+        },false);
+      document.getElementById("button0").addEventListener("click",() => {
+        let textPanel = document.getElementById("userInput");
+        let newValue = textPanel.value + "0";
+        textPanel.setAttribute("value",newValue);
+        },false);
+
+      document.getElementById("dialButton").addEventListener("click",dialNumbers,false);
+
+    </script>
+  </body>
+</html>
