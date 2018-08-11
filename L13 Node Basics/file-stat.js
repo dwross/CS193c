@@ -5,11 +5,11 @@ function handleStat(err,stat) {
 		console.log("handleStat returned error");
 		return;
 	}
-if(stat.isFile()) {
-    console.log("example.js is a file");
-} else {
-    console.log("example.js is not a file");    
-}
+	if(stat.isFile()) {
+		console.log("example.js is a file");
+	} else {
+		console.log("example.js is not a file");    
+	}
 }
 
 var stat = fs.stat("example.js",handleStat);
