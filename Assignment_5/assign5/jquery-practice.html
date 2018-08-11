@@ -34,5 +34,23 @@ ties.</p>
 <input type="button" value="Fade Out Speaker" id="theSpeakersButton" />
 </div>
 
+<script src="jquery-3.3.1.js"></script>
+
+<script>
+
+	function makeHeadingsRed() {
+		$("h1").addClass("redElements");
+		$("h2").addClass("redElements");
+		$("h3").addClass("redElements");
+	}
+
+	function fadeSpeaker() {
+		$("#speakerHeading").fadeOut(1000);
+	}
+
+	$("#theRedButton").bind("click",makeHeadingsRed);
+	$("#theSpeakersButton").bind("click",fadeSpeaker);
+
+</script>
 </body>
 </html>

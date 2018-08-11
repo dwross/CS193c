@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Open Weather via AJAX</title>
+  </head>
+  <body>
+    <h1>Open Weather via AJAX</h1>
+    <label for"zipInput">Enter ZIP code:</label>
+    <input id="zipInput" type="text" value="" size="25" />
+    <input type="button" value="Get Weather" onclick="getWeather();" />
+    <input type="button" value="Clear" onclick="clearWeather();" />
+    <form>
+      <textarea id="weatherOutput" rows="12" cols="50"></textarea>
+    </form>
+
+    <script>
+      var requestObj = null;
+      function getWeather() {
+        let userInput = document.getElementById("zipInput").value;
+        requestObj = new XMLHttpRequest();
+        requestObj.addEventListener("error",processBad,null);
+        requestObj.addEventListener("abort",processBad,null);
+        requestObj.addEventListener("load",processWeather,null);
+        requestObj.open('GET', 'http://api.openweathermap.org/data/2.5/weather?zip=' + userInput + ',us&units=imperial&APPID=1c0bb1ff2f73abd7e1822485936b3b8d', true);
+        requestObj.send(null); 
+      }
+      function processWeather() {
+        if (requestObj.status !== 200) {
+          processBad();
+        }else{
+          let result = JSON.parse(requestObj.responseText);
+          let currentValue = document.getElementById("weatherOutput").value;
+          document.getElementById("weatherOutput").innerHTML = currentValue + result.name + ":   " + result.main.temp + "\n";
+        }
+      }
+      function clearWeather() {
+        document.getElementById("weatherOutput").innerHTML = "";
+        document.getElementById("zipInput").value = "";      
+      }
+      function processBad() {
+        let currentValue = document.getElementById("weatherOutput").value;
+        document.getElementById("weatherOutput").innerHTML = currentValue + "Bad ZIP code \n";        
+      }
+    </script>
+  </body>
+</html>
